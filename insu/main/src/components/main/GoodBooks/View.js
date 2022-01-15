@@ -1,4 +1,4 @@
-function GoodBooks({
+function View({
   bookImg,
   bookTitle,
   bookPublisher,
@@ -23,4 +23,4 @@ function GoodBooks({
   );
 }
 
-export default GoodBooks;
+export default View;

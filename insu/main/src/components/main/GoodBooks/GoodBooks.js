@@ -1,7 +1,7 @@
-import GoodBooks from "./GoodBooks";
+import View from "./View";
 import { useState, useEffect } from "react";
 
-function MainBooks() {
+function GoodBooks() {
   //API variables
   const API_URL = "http://api.kcisa.kr/openapi/service/rest/meta4/getKCPG0506";
   const SECRET_KEY = process.env.REACT_APP_RECOMMEND_SERVICE_KEY;
@@ -43,7 +43,7 @@ function MainBooks() {
       ) : (
         <div>
           {books.map((book) => (
-            <GoodBooks
+            <View
               bookImg={book.referenceIdentifier}
               bookTitle={book.title}
               bookPublisher={book.extent}
@@ -57,4 +57,4 @@ function MainBooks() {
   );
 }
 
-export default MainBooks;
+export default GoodBooks;

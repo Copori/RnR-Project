@@ -1,9 +1,9 @@
-import MainBooks from "./components/main/MainBooks";
+import Main from "./components/main/Main";
 
 function App() {
   return (
     <div>
-      <MainBooks />
+      <Main />
     </div>
   );
 }
