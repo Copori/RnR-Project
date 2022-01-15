@@ -6,7 +6,7 @@ function GoodBooks() {
   const API_URL = "http://api.kcisa.kr/openapi/service/rest/meta4/getKCPG0506";
   const SECRET_KEY = process.env.REACT_APP_RECOMMEND_SERVICE_KEY;
   let pageNum = 1; //total books = 825
-  let countBook = 20; // 불러올 책의 개수
+  let countBook = 825; // 불러올 책의 개수
 
   //react variables
   const [loading, setLoading] = useState(true);
@@ -37,7 +37,7 @@ function GoodBooks() {
 
   //View
   return (
-    <div>
+    <div className="GoodBooks">
       {loading ? (
         <h1>Loading...</h1>
       ) : (

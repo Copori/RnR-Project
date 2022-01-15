@@ -3,7 +3,7 @@ import GoodBooks from "./GoodBooks/GoodBooks";
 function Main() {
   //View
   return (
-    <div>
+    <div className="main">
       <GoodBooks />
     </div>
   );

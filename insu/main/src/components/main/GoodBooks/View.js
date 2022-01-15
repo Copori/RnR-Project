@@ -6,19 +6,21 @@ function View({
   bookDetailURL,
 }) {
   return (
-    <div key={bookDetailURL}>
-      <a href={bookDetailURL}>
-        <img src={bookImg} alt="noImg" />
-        <br />
+    <div className="GoodBooks__box">
+      <div key={bookDetailURL}>
+        <a href={bookDetailURL}>
+          <img src={bookImg} alt="noImg" />
+          <br />
 
-        <span>{bookTitle}</span>
+          <span>{bookTitle}</span>
+          <br />
+        </a>
+        <span>출판사: {bookPublisher}</span>
         <br />
-      </a>
-      <span>출판사: {bookPublisher}</span>
-      <br />
-      <span>출간일: {bookPublishDate}</span>
-      <br />
-      <br />
+        <span>출간일: {bookPublishDate}</span>
+        <br />
+        <br />
+      </div>
     </div>
   );
 }
