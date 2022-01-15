@@ -1,12 +1,12 @@
-/* eslint-disable jsx-a11y/alt-text */
+import GoodBooks from "./GoodBooks";
 import { useState, useEffect } from "react";
 
 function MainBooks() {
   //API variables
   const API_URL = "http://api.kcisa.kr/openapi/service/rest/meta4/getKCPG0506";
   const SECRET_KEY = process.env.REACT_APP_RECOMMEND_SERVICE_KEY;
-  let pageNum = 1; //max page = 81
-  let countBook = 10;
+  let pageNum = 1; //total books = 825
+  let countBook = 20; // 불러올 책의 개수
 
   //react variables
   const [loading, setLoading] = useState(true);
@@ -32,6 +32,7 @@ function MainBooks() {
   useEffect(() => {
     getBooks();
     console.log(books);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   //View
@@ -42,20 +43,13 @@ function MainBooks() {
       ) : (
         <div>
           {books.map((book) => (
-            <div key={book.url}>
-              <a href={book.url}>
-                <img src={book.referenceIdentifier} />
-                <br />
-
-                <span>{book.title}</span>
-                <br />
-              </a>
-              <span>출판사: {book.extent}</span>
-              <br />
-              <span>출간일: {book.issuedDate}</span>
-              <br />
-              <br />
-            </div>
+            <GoodBooks
+              bookImg={book.referenceIdentifier}
+              bookTitle={book.title}
+              bookPublisher={book.extent}
+              bookPublishDate={book.issuedDate}
+              bookDetailURL={book.url}
+            />
           ))}
         </div>
       )}
