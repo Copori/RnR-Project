@@ -1,5 +1,11 @@
+import MainBooks from "./components/main/MainBooks";
+
 function App() {
-  return <div>Hello</div>;
+  return (
+    <div>
+      <MainBooks />
+    </div>
+  );
 }
 
 export default App;
