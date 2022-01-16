@@ -1,0 +1,46 @@
+.GoodBooks__View__box {
+  width: 190px;
+  height: 300px;
+}
+
+.GoodBooks__View__box > img {
+  width: 190px;
+  height: 230px;
+  border: 2px solid rgb(59, 46, 0);
+  background: rgba(160, 104, 0, 0.678);
+  box-shadow: 3px 2px 4px rgba(77, 59, 0, 0.671);
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.GoodBooks__View__box__contents--text {
+  width: 190px;
+  height: 70px;
+  margin-top: 3px;
+  border: 2px solid rgba(83, 64, 0, 0.747);
+  background: rgba(255, 240, 218, 0.774);
+  box-shadow: 4px 4px 5px rgba(112, 86, 0, 0.753);
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  cursor: pointer;
+}
+
+.GoodBooks__View__box__contents--text > span:nth-child(1) {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 5px;
+  margin-left: 5px;
+  color: rgba(53, 53, 53, 0.884);
+}
+
+.GoodBooks__View__box__contents--text > span:nth-child(2) {
+  font-size: 12px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 10px;
+  color: rgba(53, 53, 53, 0.767);
+}

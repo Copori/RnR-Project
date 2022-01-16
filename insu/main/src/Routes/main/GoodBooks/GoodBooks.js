@@ -1,12 +1,12 @@
-import View from "./View";
 import { useState, useEffect } from "react";
+import Slider from "./Slider";
 
 function GoodBooks() {
   //API variables
   const API_URL = "http://api.kcisa.kr/openapi/service/rest/meta4/getKCPG0506";
   const SECRET_KEY = process.env.REACT_APP_RECOMMEND_SERVICE_KEY;
   let pageNum = 1; //total books = 825
-  let countBook = 30; // 불러올 책의 개수
+  let countBook = 825; // 불러올 책의 개수
 
   //react variables
   const [loading, setLoading] = useState(true);
@@ -31,26 +31,17 @@ function GoodBooks() {
   // useEffect
   useEffect(() => {
     getBooks();
-    console.log(books);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
+  console.log(books[0]);
   //View
   return (
     <div className="GoodBooks">
       {loading ? (
         <h1>Loading...</h1>
       ) : (
-        <div className="GoodBooks__container">
-          {books.map((book) => (
-            <View
-              bookImg={book.referenceIdentifier}
-              bookTitle={book.title}
-              bookPublisher={book.extent}
-              bookPublishDate={book.issuedDate}
-              bookDetailURL={book.url}
-            />
-          ))}
+        <div>
+          <Slider totalBooks={books} />
         </div>
       )}
     </div>

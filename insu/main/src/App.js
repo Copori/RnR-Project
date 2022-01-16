@@ -1,10 +1,13 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Main from "./Routes/main/Main";
 
 function App() {
   return (
-    <div>
-      <Main />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path={`${process.env.PUBLIC_URL}/`} element={<Main />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

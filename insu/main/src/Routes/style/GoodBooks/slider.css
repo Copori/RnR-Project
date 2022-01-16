@@ -1,0 +1,63 @@
+.GoodBooks__Slider {
+  width: 1020px;
+  height: 320px;
+  overflow: hidden;
+  position: relative;
+}
+
+.GoodBooks__Slider .balls {
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 5;
+}
+
+.GoodBooks__Slider .balls label {
+  width: 10px;
+  height: 10px;
+  border-radius: 10px;
+  border: 2px solid #666;
+  display: inline-block;
+  background: #fff;
+  font-size: 0;
+  transition: 0.5s;
+  cursor: pointer;
+  margin: 0 3px;
+}
+
+#check1:checked ~ .GoodBooks__Slider__box {
+  margin-top: 0;
+}
+#check2:checked ~ .GoodBooks__Slider__box {
+  margin-top: -320px;
+}
+#check3:checked ~ .GoodBooks__Slider__box {
+  margin-top: -640px;
+}
+#check4:checked ~ .GoodBooks__Slider__box {
+  margin-top: -960px;
+}
+
+#check1:checked ~ .balls label:nth-child(1),
+#check2:checked ~ .balls label:nth-child(2),
+#check3:checked ~ .balls label:nth-child(3),
+#check4:checked ~ .balls label:nth-child(4) {
+  background-color: #666;
+}
+
+.GoodBooks__Slider > input {
+  display: none;
+}
+
+.GoodBooks__Slider__box {
+  height: calc(100% * 4);
+  transition: 1s;
+}
+
+.GoodBooks__Slider__contents {
+  height: calc(100% / 4);
+  display: flex;
+  justify-content: space-around;
+}

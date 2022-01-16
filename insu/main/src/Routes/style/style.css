@@ -1,2 +1,10 @@
 @import "./reset.css";
-@import "./list.css";
+@import "./GoodBooks/slider.css";
+@import "./GoodBooks/view.css";
+
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
