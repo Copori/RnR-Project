@@ -1,13 +1,14 @@
 import "../style/style.css";
+import Title from "./Title/Title";
 import GoodBooks from "./GoodBooks/GoodBooks";
-//import List from "./List";
 
 function Main() {
   //View
   return (
     <div className="main">
+      <Title />
+
       <GoodBooks />
-      {/* <List /> */}
     </div>
   );
 }

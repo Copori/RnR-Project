@@ -1,10 +1,30 @@
 @import "./reset.css";
+
+/* Font-Family-main */
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+
+/* GoodBooks */
 @import "./GoodBooks/slider.css";
 @import "./GoodBooks/view.css";
 
 .main {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
+}
+
+.main__title {
+  width: 1020px;
+  height: 280px;
+  background-color: cornflowerblue;
+}
+
+.main__title__box-text {
+  font-size: 80px;
+  color: rgba(34, 19, 0, 0.87);
+  text-shadow: 3px 2px 4px rgb(241, 185, 0);
+  font-family: Pacifico;
+  background-color: antiquewhite;
 }
