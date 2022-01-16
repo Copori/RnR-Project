@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./LogIn.css";
 
 function Login() {
@@ -26,25 +26,27 @@ function Login() {
         <div className="login__body">
           <div className="login__body--id">
             <label htmlFor="input_id" className="login__body--id-icon">
-              ID &nbsp;&nbsp;:{" "}
+              {" "}
             </label>
             <input
               type="text"
               name="input_id"
               value={inputId}
               className="login__body--id-input"
+              placeholder="아이디를 입력하세요."
               onChange={handleInputId}
             />
           </div>
           <div className="login__body--pw">
             <label htmlFor="input_pw" className="login__body--pw-icon">
-              PW :{" "}
+              {" "}
             </label>
             <input
               type="password"
               name="input_pw"
               value={inputPw}
               className="login__body--pw-input"
+              placeholder="비밀번호를 입력하세요."
               onChange={handleInputPw}
             />
           </div>
@@ -55,7 +57,7 @@ function Login() {
             className="login__btn--signin"
             onClick={onClickLogin}
           >
-            Sign In
+            로그인
           </button>
           <button
             type="button"
