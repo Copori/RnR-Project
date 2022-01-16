@@ -54,4 +54,25 @@ public class UserService {
     public Optional<User> getMyUserWithAuthorities() {
         return SecurityUtil.getCurrentUsername().flatMap(userRepository::findOneWithAuthoritiesByUsername);
     }
+
+    /**
+     * 회원정보 수정
+     */
+    @Transactional
+    public void update(Long id, UserDto request) {
+        Optional<User> findUser = userRepository.findById(id);
+        if (findUser.isPresent()) {
+            User user = findUser.stream().findFirst().get();
+            user.setUserId(id);
+            user.setUsername(request.getUsername());
+            //TODO 시큐리티에서 회원정보 어떻게 하는지
+            user.setPassword(request.getPassword());
+            user.setEmail(request.getEmail());
+        }
+    }
+
+    public User findById(Long id) {
+        Optional<User> findUser = userRepository.findById(id);
+        return findUser.stream().findFirst().get();
+    }
 }

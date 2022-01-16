@@ -11,4 +11,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
     // 쿼리수행을 Eager조회로 authorities정보도 같이 갖고옴
     @EntityGraph(attributePaths = "authorities")
     Optional<User> findOneWithAuthoritiesByUsername(String username);
+
+
 }
