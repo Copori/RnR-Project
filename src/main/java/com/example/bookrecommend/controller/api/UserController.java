@@ -28,15 +28,15 @@ public class UserController {
         return new CreateUserResponse(signupUser);
     }
 
-    /** 회원저장 */
-    @PostMapping("/signup")
-    public ResponseDto signup2(@Valid @RequestBody UserDto request) {
-        User signupUser = userService.signup(request);
-
-        //Entity->Dto
-        CreateUserResponse u = new CreateUserResponse(signupUser);
-        return new ResponseDto(HttpStatus.OK.value(), u);
-    }
+    //TODO 수연 : return타입 ResponseDto로 통일하는 작업 예정
+//    @PostMapping("/signup")
+//    public ResponseDto signup2(@Valid @RequestBody UserDto request) {
+//        User signupUser = userService.signup(request);
+//
+//        //Entity->Dto
+//        CreateUserResponse u = new CreateUserResponse(signupUser);
+//        return new ResponseDto(HttpStatus.OK.value(), u);
+//    }
 
     /** 회원정보 조회 */
     @GetMapping("/profile/{userId}")
