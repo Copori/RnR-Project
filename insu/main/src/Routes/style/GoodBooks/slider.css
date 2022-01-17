@@ -1,6 +1,6 @@
 .GoodBooks__Slider {
   width: 1020px;
-  height: 320px;
+  height: 340px;
   overflow: hidden;
   position: relative;
 }
@@ -31,13 +31,13 @@
   margin-top: 0;
 }
 #check2:checked ~ .GoodBooks__Slider__box {
-  margin-top: -320px;
+  margin-top: -340px;
 }
 #check3:checked ~ .GoodBooks__Slider__box {
-  margin-top: -640px;
+  margin-top: -680px;
 }
 #check4:checked ~ .GoodBooks__Slider__box {
-  margin-top: -960px;
+  margin-top: -1020px;
 }
 
 #check1:checked ~ .balls label:nth-child(1),

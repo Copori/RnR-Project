@@ -1,5 +1,13 @@
 import { useState, useEffect } from "react";
+
 import Slider from "./Slider";
+
+import {
+  GiSpellBook,
+  GiBookmarklet,
+  GiSecretBook,
+  GiBlackBook,
+} from "react-icons/gi";
 
 function GoodBooks() {
   //API variables
@@ -7,6 +15,18 @@ function GoodBooks() {
   const SECRET_KEY = process.env.REACT_APP_RECOMMEND_SERVICE_KEY;
   let pageNum = 1; //total books = 825
   let countBook = 825; // 불러올 책의 개수
+
+  //icon variablaes
+  const [bookToggle, setBookToggle] = useState(true);
+
+  //아이콘 변경 토글 함수
+  function onChoiceBookToggle() {
+    setBookToggle((bookToggle) => (bookToggle = false));
+  }
+
+  function onRecommandBookToggle() {
+    setBookToggle((bookToggle) => (bookToggle = true));
+  }
 
   //react variables
   const [loading, setLoading] = useState(true);
@@ -37,6 +57,22 @@ function GoodBooks() {
   //View
   return (
     <div className="GoodBooks">
+      <div className="GoodBooks__title">
+        <div className="GoodBooks__title--left">
+          <div
+            className="GoodBooks__title--icon"
+            onClick={onRecommandBookToggle}
+          >
+            {bookToggle ? <GiSpellBook /> : <GiSecretBook />}
+          </div>
+          <span onClick={onRecommandBookToggle}>추천도서</span>
+          <div className="GoodBooks__title--icon" onClick={onChoiceBookToggle}>
+            {bookToggle ? <GiBlackBook /> : <GiBookmarklet />}
+          </div>
+          <span onClick={onChoiceBookToggle}>선택도서</span>
+        </div>
+        <div className="GoodBooks__title--right"></div>
+      </div>
       {loading ? (
         <h1>Loading...</h1>
       ) : (

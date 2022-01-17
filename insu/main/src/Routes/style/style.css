@@ -2,10 +2,17 @@
 
 /* Font-Family-main */
 @import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dongle:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Gugi&display=swap");
+
+/* TItle */
+@import "./title/title.css";
 
 /* GoodBooks */
-@import "./GoodBooks/slider.css";
-@import "./GoodBooks/view.css";
+@import "./goodBooks/goodBooks.css";
+@import "./goodBooks/slider.css";
+@import "./goodBooks/view.css";
 
 .main {
   display: flex;
@@ -13,18 +20,5 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-}
-
-.main__title {
-  width: 1020px;
-  height: 280px;
-  background-color: cornflowerblue;
-}
-
-.main__title__box-text {
-  font-size: 80px;
-  color: rgba(34, 19, 0, 0.87);
-  text-shadow: 3px 2px 4px rgb(241, 185, 0);
-  font-family: Pacifico;
-  background-color: antiquewhite;
+  background-color: rgb(252, 206, 116);
 }
