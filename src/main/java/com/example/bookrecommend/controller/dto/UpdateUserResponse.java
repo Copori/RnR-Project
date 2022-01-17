@@ -20,6 +20,6 @@ public class UpdateUserResponse {
         username = user.getUsername();
         password = user.getPassword();
         nickname = user.getNickname();
-        email = user.getEmail();s
+        email = user.getEmail();
     }
 }
