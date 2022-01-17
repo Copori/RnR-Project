@@ -12,5 +12,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @EntityGraph(attributePaths = "authorities")
     Optional<User> findOneWithAuthoritiesByUsername(String username);
 
-
+    // 삭제되지 않은 user만 조회
+    Optional<User> findByIdAndActivatedTrue(Long id);
 }
