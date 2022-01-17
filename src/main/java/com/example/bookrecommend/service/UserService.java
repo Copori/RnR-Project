@@ -58,7 +58,7 @@ public class UserService {
 
     /** 회원정보 수정 */
     @Transactional
-    public void update(Long id, UserDto request) {
+    public void updateUser(Long id, UserDto request) {
 
         log.info("request : {}", request);
 
@@ -80,6 +80,7 @@ public class UserService {
         Optional<User> findUser = userRepository.findByIdAndActivatedTrue(id);
 
         User returnUser = findUser.stream().findFirst().orElseGet(() -> {
+            // 없으면 빈 객체 리턴 TODO 에러로 처리하는 것으로 고민
             return new User();
         });
 
@@ -89,7 +90,7 @@ public class UserService {
     /** 회원 정보 삭제 */
     @Transactional
     public void deleteUser(Long id) {
-        Optional<User> findUser = userRepository.findByIdAndActivatedTrue(id);
+        Optional<User> findUser = userRepository.findById(id);
 
         //삭제할 유저가 존재할 경우
         if( findUser.isPresent() ) {

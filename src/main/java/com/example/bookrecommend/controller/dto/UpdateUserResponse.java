@@ -13,13 +13,13 @@ public class UpdateUserResponse {
     private Long id;
     private String username;
     private String password;
-    private String nickname;
+//    private String nickname;
     private String email;
 
     public UpdateUserResponse(User user) {
         username = user.getUsername();
         password = user.getPassword();
-        nickname = user.getNickname();
+//        nickname = user.getNickname();
         email = user.getEmail();
     }
 }

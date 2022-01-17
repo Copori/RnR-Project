@@ -14,7 +14,7 @@ public class SelectUserResponse {
 
     public SelectUserResponse(User user) {
         username = user.getUsername();
-        nickname = user.getNickname();
+//        nickname = user.getNickname();
         email = user.getEmail();
     }
 }
