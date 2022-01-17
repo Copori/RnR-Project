@@ -1,9 +1,6 @@
 package com.example.bookrecommend.controller.api;
 
-import com.example.bookrecommend.controller.dto.CreateUserResponse;
-import com.example.bookrecommend.controller.dto.SelectUserResponse;
-import com.example.bookrecommend.controller.dto.UpdateUserResponse;
-import com.example.bookrecommend.controller.dto.UserDto;
+import com.example.bookrecommend.controller.dto.*;
 import com.example.bookrecommend.domain.User;
 import com.example.bookrecommend.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -29,6 +26,16 @@ public class UserController {
 
         //Entity->Dto
         return new CreateUserResponse(signupUser);
+    }
+
+    /** 회원저장 */
+    @PostMapping("/signup")
+    public ResponseDto signup2(@Valid @RequestBody UserDto request) {
+        User signupUser = userService.signup(request);
+
+        //Entity->Dto
+        CreateUserResponse u = new CreateUserResponse(signupUser);
+        return new ResponseDto(HttpStatus.OK.value(), u);
     }
 
     /** 회원정보 조회 */

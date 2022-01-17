@@ -18,6 +18,5 @@ public class CreateUserResponse {
         username = user.getUsername();
         nickname = user.getNickname();
         email = user.getEmail();
-
     }
 }
