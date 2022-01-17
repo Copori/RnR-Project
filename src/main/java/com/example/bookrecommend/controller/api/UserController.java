@@ -1,11 +1,14 @@
 package com.example.bookrecommend.controller.api;
 
+import com.example.bookrecommend.controller.dto.CreateUserResponse;
+import com.example.bookrecommend.controller.dto.SelectUserResponse;
 import com.example.bookrecommend.controller.dto.UpdateUserResponse;
 import com.example.bookrecommend.controller.dto.UserDto;
 import com.example.bookrecommend.domain.User;
 import com.example.bookrecommend.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -19,31 +22,39 @@ import javax.validation.Valid;
 public class UserController {
     private final UserService userService;
 
-    /** 
-     * 회원저장
-     * TODO response를 User entity가 아닌 따로 분리예정
-     */
+    /** 회원저장 */
     @PostMapping("/signup")
-    public ResponseEntity<User> signup(@Valid @RequestBody UserDto userDto) {
-        return ResponseEntity.ok(userService.signup(userDto));
+    public CreateUserResponse signup(@Valid @RequestBody UserDto request) {
+        User signupUser = userService.signup(request);
+
+        //Entity->Dto
+        return new CreateUserResponse(signupUser);
+    }
+
+    /** 회원정보 조회 */
+    @GetMapping("/profile/{userId}")
+    public SelectUserResponse findUser(@PathVariable Long userId) {
+        User findUser = userService.findById(userId);
+
+        //Entity->Dto
+        return new SelectUserResponse(findUser);
     }
 
     /** 회원수정 */
-    @PutMapping("/user/{id}")
-    public UpdateUserResponse update(@PathVariable Long id,
-                                                     @RequestBody UserDto request) {
-        log.info("id, request ; {} ", request, id);
+    @PutMapping("/profile/{userId}")
+    public UpdateUserResponse update(@PathVariable Long userId, @RequestBody UserDto request) {
+        log.info("id, request ; {} ", request, userId);
 
-        userService.update(id, request);
-        User findUser = userService.findById(id);
+        //회원 수정
+        userService.update(userId, request);
+
+        //수정된 id로 findUser
+        User findUser = userService.findById(userId);
 
         log.info("findUser : {} ", findUser);
 
-        return new UpdateUserResponse(findUser.getUserId()
-                ,findUser.getUsername()
-                ,findUser.getPassword()
-                ,findUser.getNickname()
-                ,findUser.getEmail());
+        //Entity->Dto
+        return new UpdateUserResponse(findUser);
     }
 
     //Token만

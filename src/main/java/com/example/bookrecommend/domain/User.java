@@ -3,6 +3,7 @@ package com.example.bookrecommend.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -49,7 +50,7 @@ public class User {
     @CreationTimestamp //시간 자동 입력(insert시점)
     private Timestamp createdAt;
 
-    @CreationTimestamp
+    @UpdateTimestamp
     private Timestamp updatedAt;
 
 }

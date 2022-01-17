@@ -15,18 +15,17 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
-
-    @Transactional
     public User signup(UserDto userDto) {
         if (userRepository.findOneWithAuthoritiesByUsername(userDto.getUsername()).orElse(null) != null) {
             throw new RuntimeException("이미 가입되어 있는 유저입니다.");
         }
 
-        // param으로 받은 user로 권한정보 생성
+        // param으로 받은 user로 권한정보 생성, 가입은 UESR로만
         Authority authority = Authority.builder()
                 .authorityName("ROLE_USER")
                 .build();
@@ -44,20 +43,16 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    @Transactional(readOnly = true)
     public Optional<User> getUserWithAuthorities(String username) {
         return userRepository.findOneWithAuthoritiesByUsername(username);
     }
 
     // 현재 SecurityContext에 저장된 username만 갖고옴
-    @Transactional(readOnly = true)
     public Optional<User> getMyUserWithAuthorities() {
         return SecurityUtil.getCurrentUsername().flatMap(userRepository::findOneWithAuthoritiesByUsername);
     }
 
-    /**
-     * 회원정보 수정
-     */
+    /** 회원정보 수정 */
     @Transactional
     public void update(Long id, UserDto request) {
         Optional<User> findUser = userRepository.findById(id);
@@ -65,14 +60,20 @@ public class UserService {
             User user = findUser.stream().findFirst().get();
             user.setUserId(id);
             user.setUsername(request.getUsername());
-            //TODO 시큐리티에서 회원정보 어떻게 하는지
+            //TODO 시큐리티에서 회원정보 어떻게 하는지 =>
             user.setPassword(request.getPassword());
             user.setEmail(request.getEmail());
         }
     }
 
+    /** 회원 단건 조회 */
     public User findById(Long id) {
         Optional<User> findUser = userRepository.findById(id);
-        return findUser.stream().findFirst().get();
+
+        User returnUser = findUser.stream().findFirst().orElseGet(() -> {
+            return new User();
+        });
+
+        return returnUser;
     }
 }
