@@ -24,18 +24,20 @@ public class UserController {
     public CreateUserResponse signup(@Valid @RequestBody UserDto request) {
         User signupUser = userService.signup(request);
 
+        log.info("signupUser: {}", signupUser);
+
         //Entity->Dto
         return new CreateUserResponse(signupUser);
     }
 
     //TODO 수연 : return타입 ResponseDto로 통일하는 작업 예정
-//    @PostMapping("/signup")
+//    @PostMapping("/signup2")
 //    public ResponseDto signup2(@Valid @RequestBody UserDto request) {
 //        User signupUser = userService.signup(request);
 //
 //        //Entity->Dto
-//        CreateUserResponse u = new CreateUserResponse(signupUser);
-//        return new ResponseDto(HttpStatus.OK.value(), u);
+//        CreateUserResponse userResponse = new CreateUserResponse(signupUser);
+//        return new ResponseDto(HttpStatus.OK.value(), userResponse);
 //    }
 
     /** 회원정보 조회 */
@@ -49,11 +51,11 @@ public class UserController {
 
     /** 회원수정 */
     @PutMapping("/profile/{userId}")
-    public UpdateUserResponse update(@PathVariable Long userId, @RequestBody UserDto request) {
+    public UpdateUserResponse updateUser(@PathVariable Long userId, @RequestBody UserDto request) {
         log.info("id, request ; {} ", request, userId);
 
         //회원 수정
-        userService.update(userId, request);
+        userService.updateUser(userId, request);
 
         //수정된 id로 findUser
         User findUser = userService.findById(userId);
@@ -62,6 +64,14 @@ public class UserController {
 
         //Entity->Dto
         return new UpdateUserResponse(findUser);
+    }
+
+    /** 회원 정보 삭제 */
+    @DeleteMapping("/profile/delete/{userId}")
+    public ResponseDto deleteUser(@PathVariable Long userId) {
+        userService.deleteUser(userId);
+
+        return new ResponseDto<>(HttpStatus.OK.value(), new UpdateUserResponse());
     }
 
     //Token만
