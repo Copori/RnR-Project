@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./LogIn.css";
+import "./style/style.css";
 
 function Login() {
   const [inputId, setInputId] = useState("");
@@ -21,7 +21,7 @@ function Login() {
     <div className="login">
       <div className="login__box">
         <div className="login__header">
-          <h2 className="login__header--logo">R&amp;R</h2>
+          <h2 className="login__header--logo">Read&amp;Review</h2>
         </div>
         <div className="login__body">
           <div className="login__body--id">
@@ -33,6 +33,7 @@ function Login() {
               name="input_id"
               value={inputId}
               className="login__body--id-input"
+              id="input_id"
               placeholder="아이디를 입력하세요."
               onChange={handleInputId}
             />
@@ -46,6 +47,7 @@ function Login() {
               name="input_pw"
               value={inputPw}
               className="login__body--pw-input"
+              id="input_pw"
               placeholder="비밀번호를 입력하세요."
               onChange={handleInputPw}
             />

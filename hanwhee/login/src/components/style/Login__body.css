@@ -1,0 +1,33 @@
+.login__body {
+  position: relative;
+  margin-top: 20px;
+}
+.login__body--id,
+.login__body--pw {
+  position: relative;
+  text-align: center;
+}
+.login__body--id-icon,
+.login__body--pw-icon {
+}
+
+.login__body--id-input {
+  width: 90%;
+  margin-bottom: 12px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  outline: none;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+.login__body--pw-input {
+  width: 90%;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  outline: none;
+  box-sizing: border-box;
+  font-size: 14px;
+}
