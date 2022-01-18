@@ -1,7 +1,7 @@
 const BookDetail = () => {
   return (
     <div>
-      <h1>Hello</h1>
+      <h1>BOOK DETAIL</h1>
     </div>
   );
 };

@@ -2,6 +2,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Main from "./Routes/main/Main";
 import Login from "./Routes/login/Login";
 import BookDetail from "./Routes/bookDetail/BookDetail";
+import Signup from "./Routes/signUp/Signup";
+import Profile from "./Routes/profile/Profile";
 
 function App() {
   return (
@@ -13,6 +15,8 @@ function App() {
           path={`${process.env.PUBLIC_URL}/detail`}
           element={<BookDetail />}
         />
+        <Route path={`${process.env.PUBLIC_URL}/signUp`} element={<Signup/>}/>
+        <Route path={`${process.env.PUBLIC_URL}/profile`} element={<Profile/>}/>
       </Routes>
     </BrowserRouter>
   );

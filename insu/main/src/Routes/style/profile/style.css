@@ -1,0 +1,6 @@
+@import "./Profile.css";
+@import "./reset.css";
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+@import "./Profile__header.css";
+@import "./Profile__body.css";
+@import "./Profile__info.css";

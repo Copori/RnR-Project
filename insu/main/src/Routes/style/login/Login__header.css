@@ -1,0 +1,15 @@
+.login__header {
+}
+.login__header--logo {
+  position: relative;
+  font-family: pacifico;
+  font-size: 3rem;
+  top: 30px;
+  padding-bottom: 15px;
+  padding-left: 55px;
+  padding-right: 55px;
+  text-align: center;
+  color: black;
+  cursor: pointer;
+  border-bottom: 1px solid #834a00;
+}

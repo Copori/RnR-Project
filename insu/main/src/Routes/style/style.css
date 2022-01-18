@@ -10,9 +10,9 @@
 @import "./title/title.css";
 
 /* GoodBooks */
-@import "./goodBooks/goodBooks.css";
-@import "./goodBooks/slider.css";
-@import "./goodBooks/view.css";
+@import "./GoodBooks/goodBooks.css";
+@import "./GoodBooks/slider.css";
+@import "./GoodBooks/view.css";
 
 .main {
   display: flex;
