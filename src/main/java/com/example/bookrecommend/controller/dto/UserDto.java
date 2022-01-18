@@ -13,15 +13,16 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 public class UserDto {
 
-    @NotEmpty(message = "아이디를 입력하세요 합니다.")
+    @NotEmpty(message = "아이디를 입력하세요.")
     @Size(min = 3, max = 50)
     private String username;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    @NotEmpty
+    @NotEmpty(message = "비밀번호를 입력하세요.")
     @Size(min = 3, max = 100)
     private String password;
 
+    @NotEmpty(message = "이메일을 입력하세요.")
     @Size(min = 3, max = 50)
     private String email;
 

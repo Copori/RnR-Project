@@ -22,39 +22,69 @@ public class UserController {
     private final UserService userService;
 
     /** 회원저장 */
-    @PostMapping("/signup")
-    public CreateUserResponse signup(@Valid @RequestBody UserDto request) {
-
-        User signupUser = userService.signup(request);
-
-        log.info("signupUser: {}", signupUser);
-
-        //Entity->Dto
-        return new CreateUserResponse(signupUser);
-    }
-
-    //TODO 수연 : return타입 ResponseDto로 통일하는 작업 예정
-//    @PostMapping("/signup2")
-//    public ResponseDto signup2(@Valid @RequestBody UserDto request) {
+//    @PostMapping("/signup")
+//    public CreateUserResponse signup(@Valid @RequestBody UserDto request) {
+//
 //        User signupUser = userService.signup(request);
 //
+//        log.info("signupUser: {}", signupUser);
+//
 //        //Entity->Dto
-//        CreateUserResponse userResponse = new CreateUserResponse(signupUser);
-//        return new ResponseDto(HttpStatus.OK.value(), userResponse);
+//        return new CreateUserResponse(signupUser);
 //    }
 
+    //TODO 수연 : return타입 ResponseDto로 통일하는 작업 예정
+    @PostMapping("/signup")
+    public ResponseDto signup(@Valid @RequestBody UserDto request,BindingResult result) {
+        //데이터 검증시 오류가 있다면
+        if(result.hasErrors()){
+            //로직 중단
+            return new ResponseDto(HttpStatus.BAD_REQUEST.value(), result.getFieldErrors());
+        }
+
+        //오류가 없다면 다음 로직들을 수행한다
+        User signupUser = userService.signup(request);
+
+        //Entity->Dto
+        CreateUserResponse userResponse = new CreateUserResponse(signupUser);
+        return new ResponseDto(HttpStatus.OK.value(), userResponse);
+    }
+
     /** 회원정보 조회 */
+//    @GetMapping("/profile/{userId}")
+//    public SelectUserResponse findUser(@PathVariable Long userId) {
+//        User findUser = userService.findById(userId);
+//
+//        //Entity->Dto
+//        return new SelectUserResponse(findUser);
+//    }
+
     @GetMapping("/profile/{userId}")
-    public SelectUserResponse findUser(@PathVariable Long userId) {
+    public ResponseDto findUser(@PathVariable Long userId) {
         User findUser = userService.findById(userId);
 
         //Entity->Dto
-        return new SelectUserResponse(findUser);
+        return new ResponseDto(HttpStatus.OK.value(),findUser);
     }
 
     /** 회원수정 */
+//    @PutMapping("/profile/{userId}")
+//    public UpdateUserResponse updateUser(@PathVariable Long userId, @RequestBody UserDto request) {
+//        log.info("id, request ; {} ", request, userId);
+//
+//        //회원 수정
+//        userService.updateUser(userId, request);
+//
+//        //수정된 id로 findUser
+//        User findUser = userService.findById(userId);
+//
+//        log.info("findUser : {} ", findUser);
+//
+//        //Entity->Dto
+//        return new UpdateUserResponse(findUser);
+//    }
     @PutMapping("/profile/{userId}")
-    public UpdateUserResponse updateUser(@PathVariable Long userId, @RequestBody UserDto request) {
+    public ResponseDto updateUser(@PathVariable Long userId, @RequestBody UserDto request) {
         log.info("id, request ; {} ", request, userId);
 
         //회원 수정
@@ -66,7 +96,7 @@ public class UserController {
         log.info("findUser : {} ", findUser);
 
         //Entity->Dto
-        return new UpdateUserResponse(findUser);
+        return new ResponseDto(HttpStatus.OK.value(),findUser);
     }
 
     /** 회원 정보 삭제 */
