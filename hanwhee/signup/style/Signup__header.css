@@ -1,6 +1,7 @@
-.login__header {
+.signup__header {
+  position: relative;
 }
-.login__header--logo {
+.signup__header--logo {
   position: relative;
   font-family: pacifico;
   font-size: 3rem;

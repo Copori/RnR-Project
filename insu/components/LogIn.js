@@ -21,7 +21,7 @@ function Login() {
     <div className="login">
       <div className="login__box">
         <div className="login__header">
-          <h2 className="login__header--logo">Read&amp;Review</h2>
+          <span className="login__header--logo">Read&amp;Review</span>
         </div>
         <div className="login__body">
           <div className="login__body--id">
