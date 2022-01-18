@@ -1,6 +1,5 @@
 .login__body {
   position: relative;
-  margin-top: 20px;
 }
 .login__body--id,
 .login__body--pw {
@@ -13,6 +12,7 @@
 
 .login__body--id-input {
   width: 90%;
+  margin-top: 100px;
   margin-bottom: 12px;
   padding: 15px;
   border: 1px solid #ddd;
@@ -30,4 +30,8 @@
   outline: none;
   box-sizing: border-box;
   font-size: 14px;
+}
+.login__body--id-input:focus,
+.login__body--pw-input:focus {
+  border: 1px solid rgb(131, 74, 0);
 }
