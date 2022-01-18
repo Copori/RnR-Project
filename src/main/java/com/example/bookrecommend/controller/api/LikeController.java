@@ -6,6 +6,8 @@ import com.example.bookrecommend.service.LikeService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,8 +26,14 @@ public class LikeController {
     /** 사용자가 좋아요 한 책 목록 */
     @GetMapping("/books/{userId}")
     public ResponseDto findBookList(@PathVariable Long userId) {
+
+        /** 방안 1: 현재 접속한 username으로 찾음 => key값이 아님 */
+        /** 방안 2: userId로 조회를 해옴 => client에 login을 하면 userId를 전달*/
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String username = auth.getName();
+
         // 책 목록 조회
-        List<BookListDto> bookListDtos = likeService.selectBookList(userId);
+        List<BookListDto> bookListDtos = likeService.selectBookList(username);
 
         return new ResponseDto(HttpStatus.OK.value(), bookListDtos);
     }
@@ -35,6 +43,22 @@ public class LikeController {
 
 
     /** 좋아요 저장 */
+    @GetMapping("/like/{bookId}")
+    public ResponseDto saveLikes(@PathVariable Long bookId) {
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String username = auth.getName();
+        Object principal = auth.getPrincipal();
+        Object details = auth.getDetails();
+
+
+        log.info("현재 로그인한 user_name : {}", username);
+        log.info("현재 로그인한 principal : {}", principal);
+
+        likeService.saveLikes(bookId, username);
+
+        return null;
+    }
 
     /** 좋아요 취소 */
 

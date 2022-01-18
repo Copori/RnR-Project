@@ -24,7 +24,4 @@ public class UserDto {
 
     @Size(min = 3, max = 50)
     private String email;
-
-    private Timestamp createdAt;
-    private Timestamp updatedAt;
 }
