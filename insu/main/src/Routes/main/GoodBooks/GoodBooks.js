@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import Slider from "./Slider";
+import View from "./View";
 
 import {
   GiSpellBook,
@@ -46,7 +46,7 @@ function GoodBooks() {
         }
       )
     ).json();
-      bookList[i-1] = bookList.concat(json.response.body.items.item);
+      bookList.push(json.response.body.items.item);
       console.log(bookList[i-1]);
     }
     const json = await (
@@ -60,8 +60,9 @@ function GoodBooks() {
       )
     ).json();
     setBooks(json.response.body.items.item);
+    bookList = bookList.concat();
     setBookLists(bookList);
-    console.log(bookList);
+    console.log(bookList.concat());
     setLoading(false);
   };
   
@@ -94,7 +95,7 @@ function GoodBooks() {
         <h1>Loading...</h1>
       ) : (
         <div>
-          <Slider totalBooks={books} />
+          <View totalBooks={booklists} />
         </div>
       )}
     </div>

@@ -11,14 +11,11 @@
 
 /* GoodBooks */
 @import "./GoodBooks/goodBooks.css";
-@import "./GoodBooks/slider.css";
 @import "./GoodBooks/view.css";
 
 .main {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  height: 100vh;
   background-color: rgb(252, 206, 116);
 }

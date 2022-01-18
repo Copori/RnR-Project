@@ -1,6 +1,14 @@
+.GoodBooks__View {
+  width: 1040px;
+  height: 320px;
+  background-color: aqua;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-around;
+}
+
 .GoodBooks__View__box {
-  width: 190px;
-  height: 300px;
+  position: relative;
 }
 
 .GoodBooks__View__box > img {
@@ -45,4 +53,18 @@
   margin-left: 10px;
   color: rgba(53, 53, 53, 0.767);
   background: #ffe812;
+}
+
+.GoodBooks__View__box--cover {
+  position: absolute;
+  width: 190px;
+  height: 230px;
+  background-color: black;
+  z-index: 1;
+  border-radius: 15px;
+  visibility: visible;
+}
+
+.GoodBooks__View__box--cover:hover {
+  visibility: hidden;
 }

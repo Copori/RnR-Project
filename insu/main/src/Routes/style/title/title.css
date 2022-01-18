@@ -3,6 +3,7 @@
   height: 200px;
   display: flex;
   justify-content: space-between;
+  margin-top: 20px;
 }
 
 .main__title__box {
