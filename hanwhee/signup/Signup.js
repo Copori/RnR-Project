@@ -34,14 +34,6 @@ function Signup() {
             가입하기
           </button>
         </div>
-        <div className="signup__footer">
-          <span className="signup__footer--info">
-            이미 계정이 있으신가요?&nbsp;&nbsp;
-          </span>
-          <a href="">
-            <span className="signup__footer--login">로그인 하러가기&rarr;</span>
-          </a>
-        </div>
       </div>
     </div>
   );

@@ -21,7 +21,7 @@ function Profile() {
               className="profile__body--input-email"
             />
             <input
-              type="password"
+              type="text"
               placeholder="비밀번호"
               className="profile__body--input-pw"
             />

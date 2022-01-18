@@ -26,17 +26,19 @@
   margin-top: 50px;
   margin-bottom: 12px;
   padding: 15px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+  background-color: #f2dc01;
+  border: none;
+  border-bottom: 2px solid rgb(131, 74, 0);
   outline: none;
   box-sizing: border-box;
   font-size: 14px;
 }
-.signup__body--input-id:focus,
-.signup__body--input-name:focus,
-.signup__body--input-pw:focus,
-.signup__body--input-pwcheck:focus {
-  border: 1px solid rgb(131, 74, 0);
+.signup__body--input-id::placeholder,
+.signup__body--input-name::placeholder,
+.signup__body--input-pw::placeholder,
+.signup__body--input-pwcheck::placeholder {
+  color: rgb(131, 74, 0);
+  font-weight: 700;
 }
 .signup__body--input-id {
 }
