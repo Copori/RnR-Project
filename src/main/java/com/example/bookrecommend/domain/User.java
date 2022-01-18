@@ -3,9 +3,12 @@ package com.example.bookrecommend.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -20,7 +23,7 @@ public class User {
     @Id
     @Column(name = "user_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userId;
+    private Long id;
 
     @Column(name = "username", length = 50, unique = true)
     private String username;
@@ -29,15 +32,15 @@ public class User {
     @Column(name = "password", length = 100)
     private String password;
 
-    @Column(name = "nickname", length = 50)
-    private String nickname;
-
     @JsonIgnore
     @Column(name = "activated")
     private boolean activated;
 
     @Column(nullable = true, length = 50)
     private String email;
+
+    @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL)
+    List<Like> likes = new ArrayList<>();
 
     @ManyToMany
     @JoinTable(
@@ -49,7 +52,7 @@ public class User {
     @CreationTimestamp //시간 자동 입력(insert시점)
     private Timestamp createdAt;
 
-    @CreationTimestamp
+    @UpdateTimestamp
     private Timestamp updatedAt;
 
 }
