@@ -3,7 +3,7 @@ package com.example.bookrecommend.controller.dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.sql.Timestamp;
 
@@ -13,18 +13,14 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 public class UserDto {
 
-    @NotNull
+    @NotEmpty(message = "아이디를 입력하세요 합니다.")
     @Size(min = 3, max = 50)
     private String username;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    @NotNull
+    @NotEmpty
     @Size(min = 3, max = 100)
     private String password;
-
-//    @NotNull
-//    @Size(min = 3, max = 50)
-//    private String nickname;
 
     @Size(min = 3, max = 50)
     private String email;

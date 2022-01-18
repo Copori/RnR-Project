@@ -68,7 +68,7 @@ public class UserService {
         // 추출한 객체에 수정 요청으로 들어온 값 세팅
         if (findUser.isPresent()) {
             User user = findUser.stream().findFirst().get();
-            user.setUserId(id);
+            user.setId(id);
             user.setUsername(request.getUsername());
             user.setPassword(passwordEncoder.encode(request.getPassword()));
             user.setEmail(request.getEmail());
@@ -96,8 +96,6 @@ public class UserService {
         if( findUser.isPresent() ) {
             User user = findUser.stream().findFirst().get();
             user.setActivated(false);
-
-            userRepository.save(user);
         }
     }
 }
