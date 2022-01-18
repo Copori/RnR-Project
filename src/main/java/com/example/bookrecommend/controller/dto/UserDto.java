@@ -25,7 +25,4 @@ public class UserDto {
     @NotEmpty(message = "이메일을 입력하세요.")
     @Size(min = 3, max = 50)
     private String email;
-
-    private Timestamp createdAt;
-    private Timestamp updatedAt;
 }

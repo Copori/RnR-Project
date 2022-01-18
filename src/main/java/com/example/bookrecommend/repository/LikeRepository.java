@@ -14,15 +14,18 @@ public class LikeRepository {
     private final EntityManager em;
 
     /** 특정 유저가 좋아요 한 책 리스트 */
-    public List<Like> findLikeAllByUserId(Long userId) {
-        List<Like> likeAll = em.createQuery("" +
-                        "SELECT l.bookId" +
-                        " FROM Like l" +
-                        " WHERE l.userId = :userId", Like.class)
-                .setParameter("userId", userId)
+    public List<Like> findLikeAllByUsername(String username) {
+        List<Like> findList = em.createQuery("select l.bookId from Like l join l.user u where u.username =:username", Like.class)
+                .setParameter("username", username)
                 .getResultList();
+//        List<Like> likeAll = em.createQuery("" +
+//                        "SELECT l.bookId" +
+//                        " FROM Like l" +
+//                        " WHERE l.user = :userId", Like.class)
+//                .setParameter("userId", userId)
+//                .getResultList();
 
-        return likeAll;
+        return findList;
     }
 
     /** 책기준 좋아요 개수 */
@@ -35,5 +38,10 @@ public class LikeRepository {
                 .getResultList();
 
         return totalLike;
+    }
+
+    /** 좋아요 저장 */
+    public void saveLikes(Like like) {
+        em.persist(like);
     }
 }
