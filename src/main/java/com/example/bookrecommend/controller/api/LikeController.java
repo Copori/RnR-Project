@@ -40,7 +40,6 @@ public class LikeController {
     // 책 상세 페이지에서 처리
     /** 책의 전체 좋아요 개수 */
 
-
     /** 좋아요 저장 */
     @PutMapping("/like/{bookId}")
     public ResponseEntity saveLikes(@PathVariable Long bookId) {
