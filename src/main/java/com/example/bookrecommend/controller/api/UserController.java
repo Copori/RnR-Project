@@ -8,7 +8,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.util.ObjectUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,7 +20,6 @@ import javax.validation.Valid;
 public class UserController {
     private final UserService userService;
 
-    /** 회원저장 */
 //    @PostMapping("/signup")
 //    public CreateUserResponse signup(@Valid @RequestBody UserDto request) {
 //
@@ -33,7 +31,7 @@ public class UserController {
 //        return new CreateUserResponse(signupUser);
 //    }
 
-    //TODO 수연 : return타입 ResponseDto로 통일하는 작업 예정
+    /** 회원저장 */
     @PostMapping("/signup")
     public ResponseDto signup(@Valid @RequestBody UserDto request,BindingResult result) {
         //데이터 검증시 오류가 있다면
@@ -50,7 +48,6 @@ public class UserController {
         return new ResponseDto(HttpStatus.OK.value(), userResponse);
     }
 
-    /** 회원정보 조회 */
 //    @GetMapping("/profile/{userId}")
 //    public SelectUserResponse findUser(@PathVariable Long userId) {
 //        User findUser = userService.findById(userId);
@@ -59,6 +56,7 @@ public class UserController {
 //        return new SelectUserResponse(findUser);
 //    }
 
+    /** 회원정보 조회 */
     @GetMapping("/profile/{userId}")
     public ResponseDto findUser(@PathVariable Long userId) {
         User findUser = userService.findById(userId);
@@ -67,7 +65,6 @@ public class UserController {
         return new ResponseDto(HttpStatus.OK.value(),findUser);
     }
 
-    /** 회원수정 */
 //    @PutMapping("/profile/{userId}")
 //    public UpdateUserResponse updateUser(@PathVariable Long userId, @RequestBody UserDto request) {
 //        log.info("id, request ; {} ", request, userId);
@@ -83,6 +80,8 @@ public class UserController {
 //        //Entity->Dto
 //        return new UpdateUserResponse(findUser);
 //    }
+
+    /** 회원수정 */
     @PutMapping("/profile/{userId}")
     public ResponseDto updateUser(@PathVariable Long userId, @RequestBody UserDto request) {
         log.info("id, request ; {} ", request, userId);

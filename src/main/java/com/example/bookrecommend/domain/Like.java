@@ -55,6 +55,4 @@ public class Like {
         like.setActivated(false);
         return like;
     }
-
-
 }

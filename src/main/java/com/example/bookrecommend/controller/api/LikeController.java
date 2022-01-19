@@ -2,7 +2,6 @@ package com.example.bookrecommend.controller.api;
 
 import com.example.bookrecommend.controller.dto.BookListDto;
 import com.example.bookrecommend.controller.dto.ResponseDto;
-import com.example.bookrecommend.domain.Like;
 import com.example.bookrecommend.service.LikeService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -59,7 +58,6 @@ public class LikeController {
         return ResponseEntity.status(HttpStatus.OK).body(HttpStatus.OK.value());
     }
 
-    /** userId와 bookId로 좋아요 테이블 조회해서 있으면 activated값 false로 바꾸기*/
     /** 좋아요 취소 */
     @PutMapping("/cancel/{bookId}")
     public ResponseEntity cancleLikes(@PathVariable Long bookId){

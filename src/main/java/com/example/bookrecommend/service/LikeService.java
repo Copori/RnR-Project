@@ -1,15 +1,12 @@
 package com.example.bookrecommend.service;
 
 import com.example.bookrecommend.controller.dto.BookListDto;
-import com.example.bookrecommend.controller.dto.ResponseDto;
-import com.example.bookrecommend.controller.dto.UpdateUserResponse;
 import com.example.bookrecommend.domain.Like;
 import com.example.bookrecommend.domain.User;
 import com.example.bookrecommend.repository.LikeRepository;
 import com.example.bookrecommend.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
