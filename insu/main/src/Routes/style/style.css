@@ -12,6 +12,7 @@
 /* GoodBooks */
 @import "./GoodBooks/goodBooks.css";
 @import "./GoodBooks/view.css";
+@import "./GoodBooks/checkBooks.css";
 
 /* Book Detail */
 @import "./bookDetail/bookDetail.css";
