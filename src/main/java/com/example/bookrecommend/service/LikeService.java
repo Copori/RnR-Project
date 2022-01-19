@@ -26,10 +26,10 @@ public class LikeService {
     public List<BookListDto> selectBookList(String username) {
 
         // 사용자의 책 목록 추출
-        List<Like> findBook = likeRepository.findLikeAllByUsername(username);
+        List<Long> findBookId = likeRepository.findLikeAllByUsername(username);
 
-        List<BookListDto> result = findBook.stream()
-                .map(b -> new BookListDto(b.getBookId()))
+        List<BookListDto> result = findBookId.stream()
+                .map(b -> new BookListDto(b))
                 .collect(Collectors.toList());
 
         return result;
@@ -48,8 +48,10 @@ public class LikeService {
     }
 
     /** 좋아요 저장 */
+    @Transactional
     public void saveLikes(Long bookId, String username) {
 
+        // 현재 접속한 아이디로 user객체를 찾아와
         User findUser = userRepository.findByUsername(username).orElseGet(() -> {
             return new User();
         });
@@ -61,6 +63,5 @@ public class LikeService {
         like.setActivated(true);
 
         likeRepository.saveLikes(like);
-
     }
 }

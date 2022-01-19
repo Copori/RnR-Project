@@ -26,7 +26,6 @@ public class LikeTest {
     EntityManager em;
 
     @Test
-    @Rollback(value = false)
     public void 객체저장_테스트() {
         Like like = Like
                 .builder()

@@ -6,12 +6,10 @@ import com.example.bookrecommend.service.LikeService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -43,25 +41,24 @@ public class LikeController {
 
 
     /** 좋아요 저장 */
-    @GetMapping("/like/{bookId}")
-    public ResponseDto saveLikes(@PathVariable Long bookId) {
+    @PutMapping("/like/{bookId}")
+    public ResponseEntity saveLikes(@PathVariable Long bookId) {
 
+        //시큐리티 컨텍스트에서 찾아옴
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+        // 현재 로그인한 username
         String username = auth.getName();
         Object principal = auth.getPrincipal();
-        Object details = auth.getDetails();
-
 
         log.info("현재 로그인한 user_name : {}", username);
         log.info("현재 로그인한 principal : {}", principal);
 
         likeService.saveLikes(bookId, username);
 
-        return null;
+        return ResponseEntity.status(HttpStatus.OK).body(HttpStatus.OK.value());
     }
 
     /** 좋아요 취소 */
-
-    /**  */
 
 }
