@@ -1,7 +1,6 @@
 .GoodBooks__View {
   width: 1040px;
   height: 320px;
-  background-color: aqua;
   margin-top: 10px;
   display: flex;
   justify-content: space-around;
@@ -33,7 +32,7 @@
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  cursor: pointer;
+  text-align: center;
 }
 
 .GoodBooks__View__box__contents--text > span:nth-child(1) {
@@ -57,14 +56,28 @@
 
 .GoodBooks__View__box--cover {
   position: absolute;
-  width: 190px;
-  height: 230px;
-  background-color: black;
+  width: 195px;
+  height: 233px;
   z-index: 1;
   border-radius: 15px;
-  visibility: visible;
+  opacity: 0;
+  transition: 0.4s;
+  
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  
+  background: rgb(0,0,0);
+background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
 }
 
 .GoodBooks__View__box--cover:hover {
-  visibility: hidden;
+  opacity: 1;
+}
+
+.GoodBooks__View__box--cover > div {
+  font-size: 50px;
+  color: white;
+  cursor: pointer;
 }
