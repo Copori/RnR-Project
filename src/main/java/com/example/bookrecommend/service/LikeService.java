@@ -35,7 +35,7 @@ public class LikeService {
         return result;
     }
 
-    /** 책의 좋아요 개수 */
+    /** 책의 좋아요 총 개수 */
     public Integer selectBookCnt(Long bookId) {
         
         // 리스트 추출
