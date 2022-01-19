@@ -44,3 +44,19 @@
 .GoodBooks__title--left > span:hover {
   color: white;
 }
+
+
+.GoodBooks__title--right {
+  display: flex;
+  justify-content: flex-end;
+}
+.GoodBooks__title__MoreBtn {
+  display: flex;
+  align-items: end;
+  margin-right: 30px;
+  margin-bottom: 3px;
+  font-size: 30px;
+  font-family: Jua;
+  cursor: pointer;
+  color: rgb(104, 59, 0);
+}
