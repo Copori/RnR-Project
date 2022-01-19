@@ -39,6 +39,7 @@ public class User {
     @Column(nullable = true, length = 50)
     private String email;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     List<Like> likes = new ArrayList<>();
 

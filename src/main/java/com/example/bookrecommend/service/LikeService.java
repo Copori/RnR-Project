@@ -1,12 +1,15 @@
 package com.example.bookrecommend.service;
 
 import com.example.bookrecommend.controller.dto.BookListDto;
+import com.example.bookrecommend.controller.dto.ResponseDto;
+import com.example.bookrecommend.controller.dto.UpdateUserResponse;
 import com.example.bookrecommend.domain.Like;
 import com.example.bookrecommend.domain.User;
 import com.example.bookrecommend.repository.LikeRepository;
 import com.example.bookrecommend.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -63,5 +66,19 @@ public class LikeService {
         like.setActivated(true);
 
         likeRepository.saveLikes(like);
+    }
+    /**좋아요 취소*/
+    @Transactional
+    public void cancelLikes(Long bookId, String username){
+        // 현재 접속한 아이디로 user객체를 찾아와
+        User findUser = userRepository.findByUsername(username).orElseGet(() -> {
+            return new User();
+        });
+
+        List<Like> findResult = likeRepository.findByBookIdAndUserId(bookId, findUser.getId());
+
+        Like result = findResult.stream().findFirst().get();
+
+        result.setActivated(false);
     }
 }
