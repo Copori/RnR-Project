@@ -6,6 +6,8 @@ import {useState} from "react"
 
 function View({ totalBooks, booksArray, bookToggle }) {
   const [chooseList, setChooseList] = useState([]);
+  const set = new Set(chooseList);
+  const setList = [...set];
 
   const onClick = (e) => {
     const urll = e.target.parentElement.title;
@@ -42,7 +44,7 @@ function View({ totalBooks, booksArray, bookToggle }) {
       </div>
       :
       <div>
-        {chooseList.map((book, index)=>(
+        {setList.map((book, index)=>(
            <div key={index}>
              <img src={book.referenceIdentifier}/>
              {book.title}
