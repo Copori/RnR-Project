@@ -15,7 +15,7 @@ public class LikeRepository {
 
     /** 특정 유저가 좋아요 누른 책 리스트 */
     public List<Long> findLikeAllByUsername(String username) {
-        List<Long> findList = em.createQuery("select l.bookId from Like l join l.user u where u.username =:username", Long.class)
+        List<Long> findList = em.createQuery("select l.bookId from Like l join l.user u where u.username =:username and u.activated = true", Long.class)
                 .setParameter("username", username)
                 .getResultList();
 //        List<Like> likeAll = em.createQuery("" +
