@@ -25,7 +25,7 @@
   height: 70px;
   margin-top: 3px;
   border: 3px solid rgb(131, 74, 0);
-  background: #ffe812;
+  background: rgb(241, 185, 0);
   box-shadow: 4px 4px 5px rgba(112, 86, 0, 0.753);
   border-radius: 15px;
   display: flex;
@@ -42,7 +42,6 @@
   margin-top: 5px;
   margin-left: 5px;
   color: rgba(53, 53, 53, 0.884);
-  background: #ffe812;
 }
 
 .GoodBooks__View__box__contents--text > span:nth-child(2) {
@@ -51,7 +50,6 @@
   margin-bottom: 5px;
   margin-left: 10px;
   color: rgba(53, 53, 53, 0.767);
-  background: #ffe812;
 }
 
 .GoodBooks__View__box--cover {

@@ -95,7 +95,7 @@ function GoodBooks() {
         <h1>Loading...</h1>
       ) : (
         <div>
-          <View totalBooks={booklists} />
+          <View totalBooks={books} booksArray = {booklists} bookToggle={bookToggle} />
         </div>
       )}
     </div>

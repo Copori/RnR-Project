@@ -15,6 +15,7 @@
 
 /* Book Detail */
 @import "./bookDetail/bookDetail.css";
+@import "./bookDetail/review.css";
 
 .main {
   display: flex;
