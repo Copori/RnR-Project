@@ -14,7 +14,6 @@ public class BookService {
 
     private final BookRepository bookRepository;
     private final LikeService likeService;
-    private final BookService bookService;
 
     /** 책 전체 리뷰 조회 */
     public void 책전체조회() {

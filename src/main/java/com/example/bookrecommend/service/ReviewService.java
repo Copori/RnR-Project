@@ -22,7 +22,7 @@ public class ReviewService {
     public List<ReviewDto> selectAllReview(Long bookId) {
 
         // 책의 전체 리뷰 목록 조회
-        List<Review> reviews = reviewRepository.findAllByBookIdByOrderByIdDesc();
+        List<Review> reviews = reviewRepository.findAllByBookIdOrderByIdDesc(bookId);
 
         // Entity -> dto
         List<ReviewDto> result = reviews.stream()
@@ -45,6 +45,7 @@ public class ReviewService {
     }
 
     /** 리뷰 작성 */
+    @Transactional
     public Review saveReview(ReviewDto reviewDto){
         // 권한정보를 포함해 리뷰를 생성.
         Review review = Review.builder()
