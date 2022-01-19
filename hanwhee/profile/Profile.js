@@ -8,7 +8,7 @@ function Profile() {
           <span className="profile__header--logo">Read&amp;Review</span>
         </div>
         <div className="profile__body">
-          <div className="profile__body--img"></div>
+          <img src="/" className="profile__body--img"></img>
           <div className="profile__body--input">
             <input
               type="text"
@@ -27,9 +27,16 @@ function Profile() {
             />
           </div>
         </div>
-        <div className="profile__info">
-          <div className="profile__info--textarea">
-            <textarea className="profile__info--textarea-info" />
+        <div className="footer">
+          <div className="profile__info">
+            <div className="profile__info--textarea">
+              <textarea className="profile__info--textarea-info" />
+              <div className="profile__btn">
+                <button type="submit" className="profile__btn--save">
+                  수정하기
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>

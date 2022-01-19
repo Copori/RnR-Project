@@ -5,10 +5,11 @@
 .signup__body--input {
   position: relative;
   text-align: center;
-  margin-top: 50px;
+  margin-top: 60px;
 }
-.signup__body--name-title,
+
 .signup__body--id-title,
+.signup__body--email-title,
 .signup__body--pw-title,
 .signup__body--pwcheck-title {
   position: relative;
@@ -19,7 +20,7 @@
   margin-left: 20px;
 }
 .signup__body--input-id,
-.signup__body--input-name,
+.signup__body--input-email,
 .signup__body--input-pw,
 .signup__body--input-pwcheck {
   width: 90%;
@@ -34,21 +35,30 @@
   font-size: 14px;
 }
 .signup__body--input-id::placeholder,
-.signup__body--input-name::placeholder,
+.signup__body--input-email::placeholder,
 .signup__body--input-pw::placeholder,
 .signup__body--input-pwcheck::placeholder {
   color: rgb(131, 74, 0);
   font-weight: 700;
 }
-.signup__body--input-id {
+.signup__body--id-error,
+.signup__body--email-error,
+.signup__body--pw-error,
+.signup__body--pwck-error {
+  color: red;
+  font-weight: 700;
 }
-.signup__body--id-title {
-}
-.signup__body--input-pw {
-}
-.signup__body--pw-title {
-}
-.signup__body--input-pwcheck {
-}
-.signup__body--pwcheck-title {
+
+.signup__body--id-error,
+.signup__body--email-error,
+.signup__body--pw-error,
+.signup__body--pwck-error {
+  position: relative;
+  width: auto;
+  float: left;
+  margin-left: 30px;
+  margin-right: 70px;
+  padding: 0;
+  padding-right: 20px;
+  font-size: 0.9rem;
 }

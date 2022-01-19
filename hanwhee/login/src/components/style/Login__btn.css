@@ -4,6 +4,7 @@
 }
 .login__btn--signin {
   position: relative;
+  color: aliceblue;
   margin-left: 5%;
   width: 90%;
   height: 40px;
@@ -17,6 +18,7 @@
 }
 .login__btn--signup {
   position: relative;
+  color: aliceblue;
   margin-left: 5%;
   margin-top: 10px;
   width: 90%;
