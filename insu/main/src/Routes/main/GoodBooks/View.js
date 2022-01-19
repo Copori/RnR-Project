@@ -6,8 +6,8 @@ import {useState} from "react"
 
 function View({ totalBooks, booksArray, bookToggle }) {
   const [chooseList, setChooseList] = useState([]);
-  const set = new Set(chooseList);
-  const setList = [...set];
+  const setting = new Set(chooseList);
+  const settingList = [...setting];
 
   const onBookClick = (e) => {
     const urll = e.target.parentElement.title;
@@ -15,6 +15,12 @@ function View({ totalBooks, booksArray, bookToggle }) {
     setChooseList(chooseList.concat(totalBooks.filter((book)=>book.title == urll)));
     console.log(chooseList);
     console.log(bookToggle);
+  }
+
+  const onCancelClick = (e) => {
+    const urll = e.target.parentElement.title;
+    console.dir(urll);
+    setChooseList(settingList.filter((book)=>book.title !== urll));
   }
 
   return (
@@ -44,9 +50,9 @@ function View({ totalBooks, booksArray, bookToggle }) {
       </div>
       :
       <div>
-        {setList.map((book, index)=>(
+        {settingList.map((book, index)=>(
            <div className="GoodBooks__CheckBook" key={index}>
-             <div className="GoodBooks__CheckBook--cancel"><ImCancelCircle/></div>
+             <div className="GoodBooks__CheckBook--cancel" onClick={onCancelClick} title={book.title}><ImCancelCircle/></div>
              <div className="CheckBook--img">
              <img src={book.referenceIdentifier} alt="no"/>
              </div>
