@@ -44,4 +44,21 @@ public class LikeRepository {
     public void saveLikes(Like like) {
         em.persist(like);
     }
+
+    /**좋아요 취소
+    */
+    public List<Like> findByBookIdAndUserId(Long bookId, Long userId ){
+
+
+        List<Like> findresult =em.createQuery(
+                "select l from Like l join l.user u where u.id =:userId AND l.bookId=:bookId AND l.activated=true",Like.class
+        ).setParameter("bookId",bookId)
+        .setParameter("userId",userId).getResultList();
+
+        return findresult;
+    }
+
+
+
 }
+
