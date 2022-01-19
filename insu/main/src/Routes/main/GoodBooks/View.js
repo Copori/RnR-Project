@@ -14,7 +14,7 @@ function View({ totalBooks }) {
       
               <div className="GoodBooks__View__box--cover">
                 <div><FiHeart/></div>
-                <div><a href={book.url} target="_blank"><GoBook/></a></div>
+                <div><a target="_blank" href={book.url} rel="noreferrer"><GoBook/></a></div>
               </div>
               <img src={book.referenceIdentifier} alt="n"/>
             

@@ -81,3 +81,8 @@ background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
   color: white;
   cursor: pointer;
 }
+
+.GoodBooks__View__box--cover > div > a:hover{
+  color: rgb(241, 185, 0); 
+  text-decoration: none;
+}

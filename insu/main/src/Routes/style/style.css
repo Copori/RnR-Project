@@ -13,6 +13,9 @@
 @import "./GoodBooks/goodBooks.css";
 @import "./GoodBooks/view.css";
 
+/* Book Detail */
+@import "./bookDetail/bookDetail.css";
+
 .main {
   display: flex;
   flex-direction: column;
@@ -22,4 +25,3 @@
 
 a:link { color: white; text-decoration: none;}
 a:visited { color: white; text-decoration: none;}
-a:hover { color: rgb(241, 185, 0); text-decoration: underline;}
