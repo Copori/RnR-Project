@@ -12,7 +12,7 @@ function App() {
         <Route path={`${process.env.PUBLIC_URL}/`} element={<Main />} />
         <Route path={`${process.env.PUBLIC_URL}/login`} element={<Login />} />
         <Route
-          path={`${process.env.PUBLIC_URL}/detail`}
+          path={`${process.env.PUBLIC_URL}/books`}
           element={<BookDetail />}
         />
         <Route path={`${process.env.PUBLIC_URL}/signUp`} element={<Signup/>}/>

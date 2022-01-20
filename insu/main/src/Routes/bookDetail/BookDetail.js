@@ -1,7 +1,61 @@
+import React, { useEffect } from 'react';
+import {useState} from "react";
+import { useLocation } from 'react-router-dom';
+
+// 쿼리 뽑는 함수
+function useQuery() {
+  const {search} = useLocation();
+  return React.useMemo(()=> new URLSearchParams(search),[search]);
+}
+
+
+
 const BookDetail = () => {
+// 쿼리 불러오기
+let query = useQuery();
+console.log(query.get("query"));
+const querylist = query.get("query");
+
+  //API Constants
+const API_URL = "http://api.kcisa.kr/openapi/service/rest/meta4/getKCPG0506";
+const SECRET_KEY = process.env.REACT_APP_RECOMMEND_SERVICE_KEY;
+
+  //API variables
+const [loading, setLoading] = useState(true);
+const [books, setBooks] = useState([]);
+
+
+// 책 Data 가져오기
+const getBooks = async() => {
+  const json = await (
+    await fetch(
+      `${API_URL}?serviceKey=${SECRET_KEY}&numOfRows=825&pageNo=1`,
+      {
+        headers: {
+          accept: "application/json",
+        },
+      }
+    )
+  ).json();
+  setBooks(json.response.body.items.item);
+  setLoading(false);
+};
+
+// 해당 bookId(url) 을 조회해서 해당 객체를 반환
+  let queryData = books.filter((book)=>book.url == querylist);
+  console.log(queryData[0].title);
+
+
+// useEffect
+useEffect(() => {
+  getBooks();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+}, []);
+
   return (
     <div className="BookDetail">
-      <div className="BookDetail__Containter">
+      {querylist}
+       <div className="BookDetail__Containter">
         <span className="BookDetail__Container--title">Read&Review</span>
         <div className="BookDetail__Container__box">
           <div className="BookDetail__Container__box--img">
@@ -59,6 +113,7 @@ const BookDetail = () => {
           </div>
         </div>
       </div>
+  
     </div>
   );
 };
