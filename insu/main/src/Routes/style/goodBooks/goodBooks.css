@@ -60,3 +60,7 @@
   cursor: pointer;
   color: rgb(104, 59, 0);
 }
+
+.GoodBooks__title__MoreBtn:hover {
+  color:white;
+}

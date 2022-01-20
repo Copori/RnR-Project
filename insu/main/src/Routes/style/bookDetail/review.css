@@ -39,8 +39,22 @@
     color: rgb(175, 70, 0);
   }
   
+  .BookDetail__Reivew__contents__box--star > input {
+    display: none;
+  }
+
+  .BookDetail__Reivew__contents__box--star  > label {
+    opacity: 0.3;
+    cursor: pointer;
+  }
+  
+  .BookDetail__Reivew__contents__box--star > label:hover {
+    opacity: 1;
+  }
+
   .BookDetail__Reivew__contents__box--id {
-    margin-left: 10px;
+    margin-left: 20px;
+    margin-top: 5px;
     width: 100%;
     height: 25px;
     font-size: 23px;
@@ -48,7 +62,7 @@
   }
 
   .BookDetail__Reivew__contents__box--text {
-    margin-left: 10px;
+    margin-left: 25px;
     width: 100%;
     height: 60px;
     font-size: 20px;
@@ -72,4 +86,15 @@
     right: 45px;
     cursor: pointer;
     color: rgba(54, 54, 54, 0.753);
+  }
+  
+  .BookDetail__Reivew__contents__box--text >span> input {
+  width: 90%;
+  padding: 5px;
+  border: none;
+  border-bottom: 2px solid rgb(131, 74, 0);
+  background-color: moccasin;
+  outline: none;
+  box-sizing: border-box;
+  font-size: 14px
   }

@@ -1,9 +1,10 @@
+import Review from "./Review";
+
 import React, { useEffect } from 'react';
 import {useState} from "react";
 import { useLocation, Link } from 'react-router-dom';
 import {BsFillStarFill} from "react-icons/bs";
-import {MdOutlineCancel} from "react-icons/md";
-import {BsPencilSquare} from "react-icons/bs";
+
 
 // 쿼리 뽑는 함수
 function useQuery() {
@@ -85,30 +86,7 @@ useEffect(() => {
           </p>
         </div>
       </div>
-      <div className="BookDetail__Review">
-        <span className="BookDetail__Review__title">Review</span>
-        <div className="BookDetail__Reivew__contents">
-          <div className="BookDetail__Reivew__contents__box">
-            <div className="BookDetail__Reivew__contents__box--star">
-              <div>
-                <input type="radio" name="pos" id="pos1"/>
-  <input type="radio" name="pos" id="pos2"/>
-  <input type="radio" name="pos" id="pos3"/>
-  <input type="radio" name="pos" id="pos4"/>
-  <input type="radio" name="pos" id="pos5"/>
-  </div>
-            </div>
-            <div className="BookDetail__Reivew__contents__box--id">
-              <span>닉네임: insu</span>
-            </div>
-            <div className="BookDetail__Reivew__contents__box--text">
-              <span>너무 잘 읽었습니다. 추천합니다.</span>
-            </div>
-            <div className='BookDetail__Reivew__contents--cancel'><MdOutlineCancel/></div>
-            <div className='BookDetail__Reivew__contents--renew'><BsPencilSquare/></div>
-          </div>
-        </div>
-      </div>
+      <Review/>
       </div>
       }
     </div>
