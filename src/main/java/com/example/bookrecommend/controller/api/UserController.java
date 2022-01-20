@@ -22,24 +22,12 @@ public class UserController {
     private final UserService userService;
 
     /** 회원저장 */
-//    @PostMapping("/signup")
-//    public CreateUserResponse signup(@Valid @RequestBody UserDto request) {
-//
-//        User signupUser = userService.signup(request);
-//
-//        log.info("signupUser: {}", signupUser);
-//
-//        //Entity->Dto
-//        return new CreateUserResponse(signupUser);
-//    }
-
-    //TODO 수연 : return타입 ResponseDto로 통일하는 작업 예정
     @PostMapping("/signup")
     public ResponseDto signup(@Valid @RequestBody UserDto request,BindingResult result) {
         //데이터 검증시 오류가 있다면
         if(result.hasErrors()){
             //로직 중단
-            return new ResponseDto(HttpStatus.BAD_REQUEST.value(), result.getFieldErrors());
+            return new ResponseDto(HttpStatus.INTERNAL_SERVER_ERROR.value(), result.getFieldErrors());
         }
 
         //오류가 없다면 다음 로직들을 수행한다
@@ -51,14 +39,6 @@ public class UserController {
     }
 
     /** 회원정보 조회 */
-//    @GetMapping("/profile/{userId}")
-//    public SelectUserResponse findUser(@PathVariable Long userId) {
-//        User findUser = userService.findById(userId);
-//
-//        //Entity->Dto
-//        return new SelectUserResponse(findUser);
-//    }
-
     @GetMapping("/profile/{userId}")
     public ResponseDto findUser(@PathVariable Long userId) {
         User findUser = userService.findById(userId);
@@ -83,7 +63,7 @@ public class UserController {
 //        //Entity->Dto
 //        return new UpdateUserResponse(findUser);
 //    }
-    @PatchMapping("/        profile/{userId}")
+    @PatchMapping("/profile/{userId}")
     public ResponseDto updateUser(@PathVariable Long userId, @RequestBody UserDto request) {
         log.info("id, request ; {} ", request, userId);
 
@@ -96,7 +76,7 @@ public class UserController {
         log.info("findUser : {} ", findUser);
 
         //Entity->Dto
-        return new ResponseDto(HttpStatus.OK.value(),findUser);
+        return new ResponseDto(HttpStatus.OK.value(), findUser);
     }
 
 
