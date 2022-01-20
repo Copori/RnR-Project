@@ -1,11 +1,32 @@
 package com.example.bookrecommend.repository;
 
-import com.example.bookrecommend.domain.Like;
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.example.bookrecommend.domain.Review;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Repository;
 
+import javax.persistence.EntityManager;
 import java.util.List;
 
-public interface BookRepository extends JpaRepository<Like, Long> {
+@Repository
+@RequiredArgsConstructor
+public class BookRepository{
+
+    private final EntityManager em;
+
+    public List<Review> findReviews(Long bookId) {
+        // 쿼리 생성
+        List reviews = em.createQuery("select r " +
+                        " from Review r" +
+                        " where r.bookId = :bookId" +
+                        " and r.activated = true" +
+                        " order by r.id desc")
+                .setParameter("bookId", bookId)
+                .getResultList();
+
+        return reviews;
+
+        // 총 사이즈 조회 => toal
+    }
 
     // 좋아요 총 개수
 
