@@ -8,11 +8,15 @@ import {AiOutlineCheckCircle} from "react-icons/ai";
 
 const Review = () => {
     const [star, setStar] = useState(0);
+    const [text,setText] = useState("");
     const [toggle, setToggle] = useState(true);
     // 수정 버튼 활성화/비 활성화
     const onRewrite = () => {
         setToggle((toggle)=>!toggle);
     }
+
+    const onChange = e => setText(e.target.value);
+    console.log(text);
 
     // 별 표시 함수
     const onStar5Click =() => {
@@ -79,7 +83,7 @@ const Review = () => {
             </div>
             :
             <div className="BookDetail__Reivew__contents__box--star">
-                {<BsFillStarFill/>}
+                <BsFillStarFill/>
             </div>}
 
             {/* 닉네임 표시 부분 */}
@@ -90,7 +94,7 @@ const Review = () => {
             {/* 리뷰 내용 부분 */}
             {toggle?
             <div className="BookDetail__Reivew__contents__box--text">
-                <span><input type="text" placeholder="리뷰를 입력하세요" /></span>
+                <span><input onChange ={onChange} type="text" placeholder="리뷰를 입력하세요" /></span>
             </div>
             :
             <div className="BookDetail__Reivew__contents__box--text">
