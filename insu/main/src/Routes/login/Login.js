@@ -63,6 +63,7 @@ function Login() {
             >
               로그인
             </button>
+            <Link to="/signUp">
             <button
               type="submit"
               className="login__btn--signup"
@@ -70,6 +71,7 @@ function Login() {
             >
               회원가입
             </button>
+            </Link>
           </div>
         </div>
       </div>

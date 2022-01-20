@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import useForm from "./useForm";
 import validate from "./validate";
-import "./style/style.css";
+import "../style/signUp/style.css";
 import axios from "axios";
 
 function Signup() {
