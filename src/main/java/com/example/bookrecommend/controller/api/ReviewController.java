@@ -21,12 +21,12 @@ public class ReviewController {
 
     private final ReviewService reviewService;
 
-    /** 책의 전체 리뷰 목록 조회 */
-    @GetMapping("/books/{bookId}/details")
-    public ResponseDto getReviews(@PathVariable Long bookId) {
-
-        List<ReviewDto> reviewDtos = reviewService.selectAllReview(bookId);
-
-        return new ResponseDto(HttpStatus.OK.value(), reviewDtos);
-    }
+//    /** 책의 전체 리뷰 목록 조회 */
+//    @GetMapping("/books/{bookId}/reviews")
+//    public ResponseDto getReviews(@PathVariable Long bookId) {
+//
+//        List<ReviewDto> reviewDtos = reviewService.selectAllReview(bookId);
+//
+//        return new ResponseDto(HttpStatus.OK.value(), reviewDtos);
+//    }
 }

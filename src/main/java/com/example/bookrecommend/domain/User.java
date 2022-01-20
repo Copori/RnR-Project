@@ -43,6 +43,10 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     List<Like> likes = new ArrayList<>();
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    List<Review> reviews = new ArrayList<>();
+
     @ManyToMany
     @JoinTable(
             name = "user_authority",

@@ -12,7 +12,7 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor
 public class ReviewDto {
 
-    private long book_id;
+    private Long bookId;
 
     @NotEmpty
     private int reviewScore;
@@ -22,7 +22,7 @@ public class ReviewDto {
     private String reviewContent;
 
     public ReviewDto(Review review) {
-        book_id = review.getBookId();
+        bookId = review.getBookId();
         reviewScore = review.getReviewScore();
         reviewContent = review.getReviewContent();
     }
