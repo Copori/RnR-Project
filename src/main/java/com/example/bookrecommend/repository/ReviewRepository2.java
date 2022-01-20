@@ -23,6 +23,9 @@ public class ReviewRepository2 {
 
     private final EntityManager em;
 
+    /** 
+     * 리뷰 목록 페이징
+     */ 
     public Page<Review> findReviews(Long bookId, Pageable pageable) {
         // 쿼리 생성
         List<Review> reviews = em.createQuery("select r " +

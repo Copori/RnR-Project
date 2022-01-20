@@ -23,7 +23,7 @@ public class BookService {
 
         // 1. 좋아요 총 개수 => likeService
         int likeCnt = likeService.selectBookCnt(bookId);
-        log.info("likeCnt : {}s", likeCnt);
+        log.info("likeCnt : {}", likeCnt);
 
         // 2. 책에대한 전체 리뷰 조회 => bookService : 여기서 페이징처리를
         MyReviewSummaryDto myReviewSummaryDto = reviewService.selectAllReview(bookId, pageable);
