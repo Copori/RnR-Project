@@ -11,6 +11,6 @@
   font-size: 0.9rem;
 }
 
-.signup__btn {
-  padding-bottom: 15px;
+.signup__footer--login {
+  font-weight: 700;
 }
