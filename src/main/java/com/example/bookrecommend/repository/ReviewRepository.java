@@ -14,10 +14,19 @@ public interface ReviewRepository extends JpaRepository<Review, Long> {
 
     List<Review> findAllByBookIdOrderByIdDesc(Long bookId);
 
+//
+//    @Query(value = "select count(r)" +
+//            " from Review as r" +
+//            " inner join User as u on u.id = :userId" +
+//            " where r.bookId = :bookId" +
+//            " and u.id = :userId" +
+//            " and r.activated = true")
+//    int countWithReviewByUserIdAndBookId(@Param("userId") long userId, @Param("bookId") long bookId);
     @Query(value = "select count(r)" +
             " from Review as r" +
-            " inner join User as u on u.id = :userId" +
+            " inner join r.user u"+
             " where r.bookId = :bookId" +
+            " and u.id = :userId" +
             " and r.activated = true")
      int countWithReviewByUserIdAndBookId(@Param("userId") long userId, @Param("bookId") long bookId);
 

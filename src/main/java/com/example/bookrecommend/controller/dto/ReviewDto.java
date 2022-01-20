@@ -19,6 +19,9 @@ public class ReviewDto {
     @NotNull
     private long reviewId;
 
+    @NotNull
+    private long bookId;
+
     @NotNull(message = "별점은 필수 입력입니다.")
     private int reviewScore;
 
@@ -27,7 +30,7 @@ public class ReviewDto {
     private String reviewContent;
 
     public ReviewDto(Review review) {
-        reviewId = review.getBookId();
+        bookId=review.getBookId();
         reviewScore = review.getReviewScore();
         reviewContent = review.getReviewContent();
     }

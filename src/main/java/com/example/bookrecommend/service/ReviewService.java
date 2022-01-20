@@ -87,7 +87,7 @@ public class ReviewService {
         Long userId = user.getId();
 
         // bookId추출
-        long bookId = reviewDto.getReviewId();
+        long bookId = reviewDto.getBookId();
 
         // 현재 user가 해당 bookId에 대해 첫 댓글인지
         int reviewSaveCnt = reviewRepository.countWithReviewByUserIdAndBookId(userId, bookId);// null or 1
@@ -101,7 +101,7 @@ public class ReviewService {
         }else {
             // 댓글 달았던 이력이 있는 경우
             Review review = Review.builder()
-                    .bookId(reviewDto.getReviewId())
+                    .bookId(reviewDto.getBookId())
                     .user(user)
                     .reviewScore(reviewDto.getReviewScore())
                     .reviewContent(reviewDto.getReviewContent())
