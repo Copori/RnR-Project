@@ -36,13 +36,13 @@ public class LikeService {
     }
 
     /** 책의 좋아요 총 개수 */
-    public Integer selectBookCnt(Long bookId) {
+    public int selectBookCnt(Long bookId) {
         
         // 리스트 추출
         List<Like> likeCnt = likeRepository.findLikeCnt(bookId);
         
         // 사이즈 계산
-        Integer bookCnt = likeCnt.size();
+        int bookCnt = likeCnt.size();
 
         return bookCnt;
     }
