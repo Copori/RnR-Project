@@ -50,7 +50,7 @@ public class LikeService {
 
     /** 좋아요 저장 및 취소*/
     @Transactional
-    public void LikeSaveAndCancel(Long bookId, String username) {
+    public void likeSaveAndCancel(Long bookId, String username) {
 
         // 현재 접속한 아이디로 user객체를 찾아와
         User findUser = userRepository.findByUsername(username).orElseGet(() -> {

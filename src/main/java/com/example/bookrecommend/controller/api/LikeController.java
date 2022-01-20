@@ -41,7 +41,7 @@ public class LikeController {
 
     /** 좋아요 저장 */
     @PutMapping("/like/{bookId}")
-    public ResponseEntity LikeSaveAndCancel(@PathVariable Long bookId) {
+    public ResponseEntity likeSaveAndCancel(@PathVariable Long bookId) {
 
         //시큐리티 컨텍스트에서 찾아옴
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -53,7 +53,7 @@ public class LikeController {
         log.info("현재 로그인한 user_name : {}", username);
         log.info("현재 로그인한 principal : {}", principal);
 
-        likeService.LikeSaveAndCancel(bookId, username);
+        likeService.likeSaveAndCancel(bookId, username);
 
         return ResponseEntity.status(HttpStatus.OK).body(HttpStatus.OK.value());
     }
