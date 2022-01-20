@@ -34,12 +34,12 @@ function View({ totalBooks, booksArray, bookToggle }) {
             <div className="GoodBooks__View__box" key={book.url}>
       
               <div className="GoodBooks__View__box--cover">
-                <div><a onClick={onBookClick} title={book.title}><HiOutlineHeart/></a></div>
+                <div className="GoodBooks__View__box__cover--like" onClick={onBookClick} title={book.title}><HiOutlineHeart/></div>
                 <Link to={{
                   pathname: "/books",
                   search: `?query=${book.url}`
                 }}>
-                  <div><a><GoBook/></a></div></Link>
+                  <div className="GoodBooks__View__box__cover--detail"><GoBook/></div></Link>
               </div>
               <img src={book.referenceIdentifier} alt="n"/>
             

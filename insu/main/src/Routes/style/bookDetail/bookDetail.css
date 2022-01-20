@@ -7,6 +7,7 @@
 }
 
 .BookDetail__Containter {
+  margin-top: 20px;
   width: 650px;
   height: auto;
   display: flex;
@@ -15,7 +16,7 @@
 }
 
 .BookDetail__Container--title {
-  margin-top: 20px;
+  
   font-size: 80px;
   color: rgba(34, 19, 0, 0.87);
   text-shadow: 3px 2px 4px rgb(241, 185, 0);
@@ -41,13 +42,18 @@
   border-radius: 10px;
 }
 
-.BookDetail__Container__box--text {
+.BookDetail__Container__box--img > div > img{
+  width: 190px;
+  height: 230px;
+}
+
+.BookDetail__Container__box__text {
   width: 60%;
   display: flex;
   align-items: center;
 }
 
-.BookDetail__Container__box--text > div {
+.BookDetail__Container__box__text > div {
   width: 320px;
   height: 230px;
   background-color: burlywood;
@@ -58,12 +64,28 @@
   margin-left: 15px;
 }
 
-.BookDetail__Container__box--text > div > span {
-  margin-left: 25px;
-  font-size: 18px;
+.BookDetail__Container__box__text > div > span {
+  margin-left: 20px;
   color: rgb(70, 39, 0);
   font-weight: bold;
   font-family: Jua;
+}
+
+.BookDetail__Container__box__text--title{
+  font-size: 28px;
+  text-align: center;
+}
+
+.BookDetail__Container__box__text--rights {
+  font-size: 18px;
+}
+
+.BookDetail__Container__box__text--subDescription {
+  font-size: 18px;
+}
+
+.BookDetail__Container__box__text--issuedDate {
+  font-size: 16px;
 }
 
 .BookDetail__Container__subTitle {
@@ -87,4 +109,3 @@
   font-family: Jua;
   line-height: 30px;
 }
-

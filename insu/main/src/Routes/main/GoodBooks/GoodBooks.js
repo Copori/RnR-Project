@@ -38,7 +38,7 @@ function GoodBooks() {
     let bookList = [];
 
     // Main Screen에 표시될 Data
-    for(let i = 1; i<10; i++){
+    for(let i = 1; i<6; i++){
       const json = await ( await fetch(
         `${API_URL}?serviceKey=${SECRET_KEY}&numOfRows=${countBook}&pageNo=${pageNum + i}`,
         {
@@ -52,6 +52,7 @@ function GoodBooks() {
       console.log(bookList[i-1]);
     }
 
+    
     // 전체 도서 Data
     const json = await (
       await fetch(
