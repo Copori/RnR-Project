@@ -27,12 +27,15 @@
     background-color: moccasin;
     border-radius: 20px;
     margin: 20px;
+    position: relative;
   }
+
   .BookDetail__Reivew__contents__box--star {
     width: 100%;
     height: 40px;
     font-size: 30px;
     margin-left: 15px;
+    padding: 5px 0px;
     color: rgb(175, 70, 0);
   }
   
@@ -51,4 +54,22 @@
     font-size: 20px;
     margin-top: 10px;
     font-family: Jua;
+  }
+
+  .BookDetail__Reivew__contents--cancel {
+    position: absolute;
+    font-size: 25px;
+    color: rgba(54, 54, 54, 0.548);
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+  }
+
+  .BookDetail__Reivew__contents--renew {
+    position: absolute;
+    font-size: 25px;
+    top: 10px;
+    right: 45px;
+    cursor: pointer;
+    color: rgba(54, 54, 54, 0.753);
   }

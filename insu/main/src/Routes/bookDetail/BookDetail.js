@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import {useState} from "react";
 import { useLocation, Link } from 'react-router-dom';
 import {BsFillStarFill} from "react-icons/bs";
+import {MdOutlineCancel} from "react-icons/md";
+import {BsPencilSquare} from "react-icons/bs";
 
 // 쿼리 뽑는 함수
 function useQuery() {
@@ -65,7 +67,7 @@ useEffect(() => {
             <div>
               <span className='BookDetail__Container__box__text--title'>{data[0].title}</span>
               <span className="BookDetail__Container__box__text--rights">저/역자 : {data[0].rights}</span>
-              <span className="BookDetail__Container__box__text--subDescription">추천자 :{data[0].subDescription}</span>
+              <span className="BookDetail__Container__box__text--subDescription">추천자 : {data[0].subDescription}</span>
               <span className="BookDetail__Container__box__text--issuedDate">출판일 : {data[0].issuedDate}</span>
             </div>
           </div>
@@ -96,6 +98,8 @@ useEffect(() => {
             <div className="BookDetail__Reivew__contents__box--text">
               <span>너무 잘 읽었습니다. 추천합니다.</span>
             </div>
+            <div className='BookDetail__Reivew__contents--cancel'><MdOutlineCancel/></div>
+            <div className='BookDetail__Reivew__contents--renew'><BsPencilSquare/></div>
           </div>
         </div>
       </div>
