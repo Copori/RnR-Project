@@ -134,7 +134,6 @@ public class ReviewService {
         // 요청 객체 추출
         Optional<Review> findReview = reviewRepository.findById(id);
 
-
         // 추출한 객체에 수정 요청으로 들어온 값 세팅
         if (findReview.isPresent()) {
             Review review = findReview.stream().findFirst().get();
