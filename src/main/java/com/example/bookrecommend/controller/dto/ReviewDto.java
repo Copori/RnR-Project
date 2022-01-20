@@ -4,6 +4,7 @@ import com.example.bookrecommend.domain.Review;
 import lombok.*;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Getter @Setter
@@ -12,9 +13,10 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor
 public class ReviewDto {
 
-    private long book_id;
+    @NotNull
+    private long bookId;
 
-    @NotEmpty
+    @NotNull
     private int reviewScore;
 
     @NotEmpty
@@ -22,7 +24,7 @@ public class ReviewDto {
     private String reviewContent;
 
     public ReviewDto(Review review) {
-        book_id = review.getBookId();
+        bookId = review.getBookId();
         reviewScore = review.getReviewScore();
         reviewContent = review.getReviewContent();
     }

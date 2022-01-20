@@ -12,4 +12,8 @@ import lombok.NoArgsConstructor;
 public class ResponseDto<T> {
     int status;
     T data;
+
+    public ResponseDto(int status) {
+        this.status = status;
+    }
 }

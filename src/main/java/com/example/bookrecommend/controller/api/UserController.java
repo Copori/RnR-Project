@@ -67,7 +67,7 @@ public class UserController {
         return new ResponseDto(HttpStatus.OK.value(),findUser);
     }
 
-    /** 회원수정 */
+    /** 회원정보 수정(username, email만) */
 //    @PutMapping("/profile/{userId}")
 //    public UpdateUserResponse updateUser(@PathVariable Long userId, @RequestBody UserDto request) {
 //        log.info("id, request ; {} ", request, userId);
@@ -83,7 +83,7 @@ public class UserController {
 //        //Entity->Dto
 //        return new UpdateUserResponse(findUser);
 //    }
-    @PutMapping("/profile/{userId}")
+    @PatchMapping("/        profile/{userId}")
     public ResponseDto updateUser(@PathVariable Long userId, @RequestBody UserDto request) {
         log.info("id, request ; {} ", request, userId);
 
@@ -99,12 +99,36 @@ public class UserController {
         return new ResponseDto(HttpStatus.OK.value(),findUser);
     }
 
+
+    /** 비밀번호 수정
+     /**
+     * 1.Patch를 사용해 회원 정보 일부 수정을 하려 했으나 비밀번호를 안 적을 경우 수정이 안됨
+     * 2. 현재 SpringDataJPA로 처리할 여유가 없기에
+     * 3. TODO 회원정보수정을 usename,email수정기능과 비밀번호 수정기능으로 분리할 예정
+     *
+     */
+//    @PatchMapping("/profile/{userId}")
+//    public ResponseDto updateUserPassword(@PathVariable Long userId, @RequestBody UserDto request) {
+//        log.info("id, request ; {} ", request, userId);
+//
+//        //회원 수정
+//        userService.updateUser(userId, request);
+//
+//        //수정된 id로 findUser
+//        User findUser = userService.findById(userId);
+//
+//        log.info("findUser : {} ", findUser);
+//
+//        //Entity->Dto
+//        return new ResponseDto(HttpStatus.OK.value(),findUser);
+//    }
+
     /** 회원 정보 삭제 */
-    @DeleteMapping("/profile/delete/{userId}")
+    @PatchMapping("/profile/delete/{userId}")
     public ResponseDto deleteUser(@PathVariable Long userId) {
         userService.deleteUser(userId);
 
-        return new ResponseDto<>(HttpStatus.OK.value(), new UpdateUserResponse());
+        return new ResponseDto<>(HttpStatus.OK.value());
     }
 
     //Token만

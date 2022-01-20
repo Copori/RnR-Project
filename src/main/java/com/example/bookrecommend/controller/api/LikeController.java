@@ -2,7 +2,6 @@ package com.example.bookrecommend.controller.api;
 
 import com.example.bookrecommend.controller.dto.BookListDto;
 import com.example.bookrecommend.controller.dto.ResponseDto;
-import com.example.bookrecommend.domain.Like;
 import com.example.bookrecommend.service.LikeService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -42,7 +41,7 @@ public class LikeController {
 
     /** 좋아요 저장 */
     @PutMapping("/like/{bookId}")
-    public ResponseEntity saveLikes(@PathVariable Long bookId) {
+    public ResponseEntity LikeSaveAndCancel(@PathVariable Long bookId) {
 
         //시큐리티 컨텍스트에서 찾아옴
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -54,25 +53,9 @@ public class LikeController {
         log.info("현재 로그인한 user_name : {}", username);
         log.info("현재 로그인한 principal : {}", principal);
 
-        likeService.saveLikes(bookId, username);
+        likeService.LikeSaveAndCancel(bookId, username);
 
         return ResponseEntity.status(HttpStatus.OK).body(HttpStatus.OK.value());
     }
 
-    /** userId와 bookId로 좋아요 테이블 조회해서 있으면 activated값 false로 바꾸기*/
-    /** 좋아요 취소 */
-    @PutMapping("/cancel/{bookId}")
-    public ResponseEntity cancleLikes(@PathVariable Long bookId){
-        //시큐리티 컨텍스트에서 찾아옴
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-
-        // 현재 로그인한 username
-        String username = auth.getName();
-
-        likeService.cancelLikes(bookId, username);
-
-        return new ResponseEntity(HttpStatus.OK);
-
-
-    }
 }

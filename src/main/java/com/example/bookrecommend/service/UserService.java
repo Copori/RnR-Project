@@ -56,7 +56,7 @@ public class UserService {
         return SecurityUtil.getCurrentUsername().flatMap(userRepository::findOneWithAuthoritiesByUsername);
     }
 
-    /** 회원정보 수정 */
+    /** 회원정보 수정(username, email만) */
     @Transactional
     public void updateUser(Long id, UserDto request) {
 
@@ -70,10 +70,11 @@ public class UserService {
             User user = findUser.stream().findFirst().get();
             user.setId(id);
             user.setUsername(request.getUsername());
-            user.setPassword(passwordEncoder.encode(request.getPassword()));
+//            user.setPassword(passwordEncoder.encode(request.getPassword()));
             user.setEmail(request.getEmail());
         }
     }
+
 
     /** 회원 단건 조회 */
     public User findById(Long id) {
