@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import {useState} from "react";
 import { useLocation, Link } from 'react-router-dom';
+import {BsFillStarFill} from "react-icons/bs";
 
 // 쿼리 뽑는 함수
 function useQuery() {
@@ -69,9 +70,13 @@ useEffect(() => {
             </div>
           </div>
         </div>
-        <span className="BookDetail__Container__subTitle">
-          Book Description
-        </span>
+        <div className="BookDetail__Container__subTitle">
+          <div className = "BookDetail__Container__subTitle--title">Book Description</div>
+          <div className='BookDetail__Container__subTitle--star'>
+            <BsFillStarFill/>
+            </div>
+            <div className='BookDetail__Container__subTitle--number'>3</div>
+        </div>
         <div className="BookDetail__Container__subContents">
           <p>
           {data[0].description}
@@ -83,7 +88,7 @@ useEffect(() => {
         <div className="BookDetail__Reivew__contents">
           <div className="BookDetail__Reivew__contents__box">
             <div className="BookDetail__Reivew__contents__box--star">
-              <span>❤❤❤❤❤</span>
+              <span><BsFillStarFill/><BsFillStarFill/><BsFillStarFill/><BsFillStarFill/><BsFillStarFill/></span>
             </div>
             <div className="BookDetail__Reivew__contents__box--id">
               <span>닉네임: insu</span>
