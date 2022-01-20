@@ -17,11 +17,11 @@ import java.util.List;
 @RequestMapping("/api")
 @RequiredArgsConstructor
 @Slf4j
-public class LikeController {
+public class LikeApiController {
 
     private final LikeService likeService;
 
-    /** 사용자가 좋아요 한 책 목록 */
+    /** 선택도서 */
     @GetMapping("/books/{userId}")
     public ResponseDto findBookList(@PathVariable Long userId) {
 

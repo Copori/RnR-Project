@@ -2,7 +2,6 @@ package com.example.bookrecommend.controller.api;
 
 import com.example.bookrecommend.controller.dto.ResponseDto;
 import com.example.bookrecommend.controller.dto.ReviewDto;
-import com.example.bookrecommend.domain.Review;
 import com.example.bookrecommend.service.ReviewService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -12,13 +11,12 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @RestController
 @RequestMapping("/api")
 @RequiredArgsConstructor
 @Slf4j
-public class ReviewController {
+public class ReviewApiController {
 
     private final ReviewService reviewService;
 

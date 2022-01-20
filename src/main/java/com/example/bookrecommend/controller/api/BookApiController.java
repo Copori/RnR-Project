@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api")
 @RequiredArgsConstructor
 @Slf4j
-public class BookController {
+public class BookApiController {
 
     private final BookService bookService;
 
