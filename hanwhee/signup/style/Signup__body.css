@@ -45,15 +45,9 @@
 .signup__body--email-error,
 .signup__body--pw-error,
 .signup__body--pwck-error {
+  position: relative;
   color: red;
   font-weight: 700;
-}
-
-.signup__body--id-error,
-.signup__body--email-error,
-.signup__body--pw-error,
-.signup__body--pwck-error {
-  position: relative;
   width: auto;
   float: left;
   margin-left: 30px;
