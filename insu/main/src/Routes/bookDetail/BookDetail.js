@@ -90,7 +90,13 @@ useEffect(() => {
         <div className="BookDetail__Reivew__contents">
           <div className="BookDetail__Reivew__contents__box">
             <div className="BookDetail__Reivew__contents__box--star">
-              <span><BsFillStarFill/><BsFillStarFill/><BsFillStarFill/><BsFillStarFill/><BsFillStarFill/></span>
+              <div>
+                <input type="radio" name="pos" id="pos1"/>
+  <input type="radio" name="pos" id="pos2"/>
+  <input type="radio" name="pos" id="pos3"/>
+  <input type="radio" name="pos" id="pos4"/>
+  <input type="radio" name="pos" id="pos5"/>
+  </div>
             </div>
             <div className="BookDetail__Reivew__contents__box--id">
               <span>닉네임: insu</span>
