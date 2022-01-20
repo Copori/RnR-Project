@@ -22,7 +22,7 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping("/api")
 @RequiredArgsConstructor
-public class AuthController {
+public class AuthApiController {
     private final TokenProvider tokenProvider;
     private final AuthenticationManagerBuilder authenticationManagerBuilder;
 
@@ -46,7 +46,6 @@ public class AuthController {
         HttpHeaders httpHeaders = new HttpHeaders();
         // Header에 추가
         httpHeaders.add(JwtFilter.AUTHORIZATION_HEADER, "Bearer " + jwt);
-//        httpHeaders.add("loginId", );
 
         // jwt토큰을 body에도 추가         body            header          status
         return new ResponseEntity<>(new TokenDto(jwt), httpHeaders, HttpStatus.OK);
