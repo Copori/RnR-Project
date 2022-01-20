@@ -11,12 +11,10 @@ import lombok.NoArgsConstructor;
 public class CreateUserResponse {
 
     private String username;
-    private String nickname;
     private String email;
 
     public CreateUserResponse(User user) {
         username = user.getUsername();
-//        nickname = user.getNickname();
         email = user.getEmail();
     }
 }
