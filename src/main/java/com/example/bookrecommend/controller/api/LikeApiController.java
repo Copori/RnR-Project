@@ -21,7 +21,7 @@ public class LikeApiController {
 
     private final LikeService likeService;
 
-    /** 선택도서 */
+    /** 선택 도서 목록 */
     @GetMapping("/books/like/{userId}")
     public ResponseDto findBookList(@PathVariable Long userId) {
 
@@ -34,7 +34,7 @@ public class LikeApiController {
         return new ResponseDto(HttpStatus.OK.value(), bookListDtos);
     }
 
-    /** 좋아요 저장 */
+    /** 좋아요 저장 및 취소 */
     @PutMapping("/like/{bookId}")
     public ResponseEntity likeSaveAndCancel(@PathVariable Long bookId) {
 

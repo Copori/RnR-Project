@@ -20,7 +20,4 @@ public class LoginDto {
     @Size(min = 3, max = 100)
     private String password;
 
-    @NotEmpty(message = "이메일은 필수 입니다.")
-    @Size(min = 3, max = 50)
-    private String email;
 }

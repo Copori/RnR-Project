@@ -151,7 +151,5 @@ public class ReviewService {
             Review review = findReview.stream().findFirst().get();
             review.setActivated(false);
         }
-
     }
-
 }

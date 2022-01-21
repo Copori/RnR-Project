@@ -20,7 +20,7 @@ import javax.validation.Valid;
 public class UserApiController {
     private final UserService userService;
 
-    /** 회원저장 */
+    /** 회원가입 */
     @PostMapping("/signup")
     public ResponseDto signup(@Valid @RequestBody UserDto request,BindingResult result) {
         //데이터 검증시 오류가 있다면
@@ -102,7 +102,7 @@ public class UserApiController {
 //        return new ResponseDto(HttpStatus.OK.value(),findUser);
 //    }
 
-    /** 회원 정보 삭제 */
+    /** 회원 정보 삭제(탈퇴) */
     @PatchMapping("/profile/delete/{userId}")
     public ResponseDto deleteUser(@PathVariable Long userId) {
         userService.deleteUser(userId);
