@@ -111,10 +111,17 @@ public class ReviewService {
 
     /** 리뷰 수정 */
     @Transactional
-    public void updateReview(Long id, ReviewDto request){
+    public void updateReview(Long id, ReviewDto request, String username){
+
+        // 유저 네임으로 현재 userId를 찾아옴
+        Optional<User> findUser = userRepository.findByUsername(username);
+
+        // findId 찾아오기
+        User user = findUser.get();
+        Long userId = user.getId();
 
         // 요청 객체 추출
-        Optional<Review> findReview = reviewRepository.findById(id);
+        Optional<Review> findReview = reviewRepository.findByIdAndUserId(id, userId);
 
         // 추출한 객체에 수정 요청으로 들어온 값 세팅
         if (findReview.isPresent()) {
@@ -126,10 +133,17 @@ public class ReviewService {
     }
     /** 리뷰 삭제 */
     @Transactional
-    public void deleteReview(Long id){
+    public void deleteReview(Long id, String username){
+
+        // 유저 네임으로 현재 userId를 찾아옴
+        Optional<User> findUser = userRepository.findByUsername(username);
+
+        // findId 찾아오기
+        User user = findUser.get();
+        Long userId = user.getId();
 
         // 요청 객체 추출
-        Optional<Review> findReview = reviewRepository.findById(id);
+        Optional<Review> findReview = reviewRepository.findByIdAndUserId(id, userId);
 
         // 추출한 객체에 수정 요청으로 들어온 값 세팅
         if (findReview.isPresent()) {

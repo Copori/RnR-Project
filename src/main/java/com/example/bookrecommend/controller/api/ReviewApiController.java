@@ -37,9 +37,13 @@ public class ReviewApiController {
     @PutMapping("/reviews/{reviewId}")
     public ResponseDto patchReview(@PathVariable Long reviewId, @RequestBody ReviewDto request) {
 
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+        String username = auth.getName();
+
         log.info("request: {}", request);
         // 리뷰 수정
-        reviewService.updateReview(reviewId, request);
+        reviewService.updateReview(reviewId, request, username);
 
         //Entity->Dto
         return new ResponseDto(HttpStatus.OK.value());
@@ -47,12 +51,15 @@ public class ReviewApiController {
 
 
     /** 리뷰 삭제 */
-    /**requestBody안 받아도 될 거 같아서 뺐음 -> 잘 작동함*/
     @PutMapping("/reviews/cancel/{reviewId}")
     public ResponseDto deleteReview(@PathVariable Long reviewId) {
 
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+        String username = auth.getName();
+
         // 리뷰 수정
-        reviewService.deleteReview(reviewId);
+        reviewService.deleteReview(reviewId, username);
 
         //Entity->Dto
         return new ResponseDto(HttpStatus.OK.value());
