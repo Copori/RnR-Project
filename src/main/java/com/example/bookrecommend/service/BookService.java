@@ -1,13 +1,11 @@
 package com.example.bookrecommend.service;
 
 import com.example.bookrecommend.controller.dto.MyReviewSummaryDto;
-import com.example.bookrecommend.repository.BookRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Service
 @RequiredArgsConstructor

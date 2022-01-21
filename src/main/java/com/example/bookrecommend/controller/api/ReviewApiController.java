@@ -2,7 +2,6 @@ package com.example.bookrecommend.controller.api;
 
 import com.example.bookrecommend.controller.dto.ResponseDto;
 import com.example.bookrecommend.controller.dto.ReviewDto;
-import com.example.bookrecommend.domain.Review;
 import com.example.bookrecommend.service.ReviewService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -12,13 +11,12 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @RestController
 @RequestMapping("/api")
 @RequiredArgsConstructor
 @Slf4j
-public class ReviewController {
+public class ReviewApiController {
 
     private final ReviewService reviewService;
 
@@ -30,7 +28,7 @@ public class ReviewController {
 
         String username = auth.getName();
 
-        reviewService.saveReview(username,request);
+        reviewService.saveReview(username, request);
 
         return new ResponseDto(HttpStatus.OK.value());
     }
@@ -39,9 +37,13 @@ public class ReviewController {
     @PutMapping("/reviews/{reviewId}")
     public ResponseDto patchReview(@PathVariable Long reviewId, @RequestBody ReviewDto request) {
 
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+        String username = auth.getName();
+
         log.info("request: {}", request);
         // 리뷰 수정
-        reviewService.updateReview(reviewId, request);
+        reviewService.updateReview(reviewId, request, username);
 
         //Entity->Dto
         return new ResponseDto(HttpStatus.OK.value());
@@ -49,17 +51,15 @@ public class ReviewController {
 
 
     /** 리뷰 삭제 */
-    /**requestBody안 받아도 될 거 같아서 뺐음 -> 잘 작동함*/
     @PutMapping("/reviews/cancel/{reviewId}")
     public ResponseDto deleteReview(@PathVariable Long reviewId) {
-        //시큐리티 컨텍스트에서 찾아옴
+
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
-        // 현재 로그인한 username
         String username = auth.getName();
 
         // 리뷰 수정
-        reviewService.deleteReview(reviewId,username);
+        reviewService.deleteReview(reviewId, username);
 
         //Entity->Dto
         return new ResponseDto(HttpStatus.OK.value());

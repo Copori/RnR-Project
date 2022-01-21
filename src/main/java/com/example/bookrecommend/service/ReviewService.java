@@ -7,7 +7,6 @@ import com.example.bookrecommend.domain.User;
 import com.example.bookrecommend.repository.ReviewRepository;
 import com.example.bookrecommend.repository.ReviewRepository2;
 import com.example.bookrecommend.repository.UserRepository;
-import com.example.bookrecommend.util.SecurityUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -94,13 +93,10 @@ public class ReviewService {
         int reviewSaveCnt = reviewRepository.countWithReviewByUserIdAndBookId(userId, bookId);// null or 1
 
         if( reviewSaveCnt > 0 ) {
-            throw new IllegalStateException("이미 댓글을 작성한 회원입니다.");
-            // 댓글 달았던 이력이 없을 경우
-
-
-            // 유저정보 + 권한정보를 저장
-        }else {
             // 댓글 달았던 이력이 있는 경우
+            throw new IllegalStateException("이미 댓글을 작성한 회원입니다.");
+        }else {
+            // 댓글 달았던 이력이 없을 경우
             Review review = Review.builder()
                     .bookId(reviewDto.getBookId())
                     .user(user)
@@ -115,10 +111,17 @@ public class ReviewService {
 
     /** 리뷰 수정 */
     @Transactional
-    public void updateReview(Long id, ReviewDto request){
+    public void updateReview(Long id, ReviewDto request, String username){
+
+        // 유저 네임으로 현재 userId를 찾아옴
+        Optional<User> findUser = userRepository.findByUsername(username);
+
+        // findId 찾아오기
+        User user = findUser.get();
+        Long userId = user.getId();
 
         // 요청 객체 추출
-        Optional<Review> findReview = reviewRepository.findById(id);
+        Optional<Review> findReview = reviewRepository.findByIdAndUserId(id, userId);
 
         // 추출한 객체에 수정 요청으로 들어온 값 세팅
         if (findReview.isPresent()) {
@@ -132,11 +135,13 @@ public class ReviewService {
     @Transactional
     public void deleteReview(Long id, String username){
 
-        // 현재 접속한 아이디로 user객체를 찾아와
-        User findUser = userRepository.findByUsername(username).orElseGet(() -> {
-            return new User();
-        });
-        Long userId = findUser.getId();
+        // 유저 네임으로 현재 userId를 찾아옴
+        Optional<User> findUser = userRepository.findByUsername(username);
+
+        // findId 찾아오기
+        User user = findUser.get();
+        Long userId = user.getId();
+
         // 요청 객체 추출
         Optional<Review> findReview = reviewRepository.findByIdAndUserId(id, userId);
 

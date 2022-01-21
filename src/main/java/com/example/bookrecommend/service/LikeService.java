@@ -23,7 +23,7 @@ public class LikeService {
     private final LikeRepository likeRepository;
     private final UserRepository userRepository;
 
-    /** 사용자의 좋아요 책 목록 */
+    /** 선택 도서 */
     public List<BookListDto> selectBookList(String username) {
 
         // 사용자의 책 목록 추출

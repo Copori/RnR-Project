@@ -2,6 +2,7 @@ package com.example.bookrecommend.controller.dto;
 
 import lombok.*;
 
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -11,17 +12,15 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor
 public class LoginDto {
 
-    @NotNull
+    @NotEmpty(message = "아이디는 필수 입니다.")
     @Size(min = 3, max = 50)
     private String username;
 
-    @NotNull
+    @NotEmpty(message = "비밀번호는 필수 입니다.")
     @Size(min = 3, max = 100)
     private String password;
 
-    @Size(min = 3, max = 50)
-    private String nickname;
-
+    @NotEmpty(message = "비밀번호는 필수 입니다.")
     @Size(min = 3, max = 50)
     private String email;
 }

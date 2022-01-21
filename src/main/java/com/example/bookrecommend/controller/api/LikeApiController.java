@@ -17,16 +17,14 @@ import java.util.List;
 @RequestMapping("/api")
 @RequiredArgsConstructor
 @Slf4j
-public class LikeController {
+public class LikeApiController {
 
     private final LikeService likeService;
 
-    /** 사용자가 좋아요 한 책 목록 */
-    @GetMapping("/books/{userId}")
+    /** 선택도서 */
+    @GetMapping("/books/like/{userId}")
     public ResponseDto findBookList(@PathVariable Long userId) {
 
-        /** 방안 1: 현재 접속한 username으로 찾음 => key값이 아님 */
-        /** 방안 2: userId로 조회를 해옴 => client에 login을 하면 userId를 전달*/
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String username = auth.getName();
 
@@ -35,9 +33,6 @@ public class LikeController {
 
         return new ResponseDto(HttpStatus.OK.value(), bookListDtos);
     }
-
-    // 책 상세 페이지에서 처리
-    /** 책의 전체 좋아요 개수 */
 
     /** 좋아요 저장 */
     @PutMapping("/like/{bookId}")

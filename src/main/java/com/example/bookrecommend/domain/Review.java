@@ -28,6 +28,7 @@ public class Review {
     @Column(name = "book_id")
     private Long bookId;
 
+
     private int reviewScore;
 
     private String reviewContent;
