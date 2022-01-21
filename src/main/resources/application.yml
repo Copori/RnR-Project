@@ -40,4 +40,4 @@ jwt:
   token-validity-in-seconds: 86400 #1?
 
 server:
-  port: 8888
+  port: 8889
