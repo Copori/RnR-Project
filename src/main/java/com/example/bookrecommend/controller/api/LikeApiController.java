@@ -17,6 +17,7 @@ import java.util.List;
 @RequestMapping("/api")
 @RequiredArgsConstructor
 @Slf4j
+@CrossOrigin(origins = "http://localhost:3000")
 public class LikeApiController {
 
     private final LikeService likeService;
