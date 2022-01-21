@@ -34,6 +34,8 @@ public class ReviewRepository2 {
                         " and r.activated = true" +
                         " order by r.id desc", Review.class)
                 .setParameter("bookId", bookId)
+                .setFirstResult((int) pageable.getOffset())
+                .setMaxResults(pageable.getPageSize())
                 .getResultList();
 
         // list 사이즈
