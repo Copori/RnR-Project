@@ -16,6 +16,8 @@ import javax.validation.constraints.Size;
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 public class ReviewDto {
 
+    private long reviewId;
+
     @NotNull
     private long bookId;
 

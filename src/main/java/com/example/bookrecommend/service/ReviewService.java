@@ -42,6 +42,7 @@ public class ReviewService {
         // dto로
         List<ReviewDto> reviewDtos = reviews.stream()
                 .map(r -> ReviewDto.builder()
+                        .reviewId(r.getId())
                         .bookId(r.getBookId())
                         .reviewScore(r.getReviewScore())
                         .reviewContent(r.getReviewContent())
