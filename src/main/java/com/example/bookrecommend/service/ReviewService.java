@@ -7,6 +7,7 @@ import com.example.bookrecommend.domain.User;
 import com.example.bookrecommend.repository.ReviewRepository;
 import com.example.bookrecommend.repository.ReviewRepository2;
 import com.example.bookrecommend.repository.UserRepository;
+import com.example.bookrecommend.util.SecurityUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -42,7 +43,7 @@ public class ReviewService {
         // dto로
         List<ReviewDto> reviewDtos = reviews.stream()
                 .map(r -> ReviewDto.builder()
-                        .reviewId(r.getId())
+                        .bookId(r.getBookId())
                         .reviewScore(r.getReviewScore())
                         .reviewContent(r.getReviewContent())
                         .build())
@@ -129,10 +130,15 @@ public class ReviewService {
     }
     /** 리뷰 삭제 */
     @Transactional
-    public void deleteReview(Long id){
+    public void deleteReview(Long id, String username){
 
+        // 현재 접속한 아이디로 user객체를 찾아와
+        User findUser = userRepository.findByUsername(username).orElseGet(() -> {
+            return new User();
+        });
+        Long userId = findUser.getId();
         // 요청 객체 추출
-        Optional<Review> findReview = reviewRepository.findById(id);
+        Optional<Review> findReview = reviewRepository.findByIdAndUserId(id, userId);
 
         // 추출한 객체에 수정 요청으로 들어온 값 세팅
         if (findReview.isPresent()) {

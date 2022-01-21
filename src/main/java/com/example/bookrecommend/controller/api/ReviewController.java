@@ -52,9 +52,14 @@ public class ReviewController {
     /**requestBody안 받아도 될 거 같아서 뺐음 -> 잘 작동함*/
     @PutMapping("/reviews/cancel/{reviewId}")
     public ResponseDto deleteReview(@PathVariable Long reviewId) {
+        //시큐리티 컨텍스트에서 찾아옴
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+        // 현재 로그인한 username
+        String username = auth.getName();
 
         // 리뷰 수정
-        reviewService.deleteReview(reviewId);
+        reviewService.deleteReview(reviewId,username);
 
         //Entity->Dto
         return new ResponseDto(HttpStatus.OK.value());
