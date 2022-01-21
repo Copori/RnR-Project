@@ -5,34 +5,34 @@ import { AiOutlineRead, AiOutlineKey } from "react-icons/ai";
 import { BsFillPersonFill } from "react-icons/bs";
 
 function Title() {
-  const [toggle, setToggle] = useState(true);
+  const [toggle, setToggle] = useState();
   return (
     <div className="main__title">
       <div className="main__title__box-text">
         <span>Read&Review</span>
       </div>
       <div className="main__title__box-icon">
-        <div className="box-icon__contents">
           <Link to="/Detail">
-          <AiOutlineRead />
-          <span>서재</span>
+        <div className="box-icon__contents">
+          <div className="box-icon__contents--icon"><AiOutlineRead /></div>
+          <span className="box-icon__contents--text">서재</span>
+          </div>
           </Link>
-        </div>
-        <div>
           {toggle ? (
+            <Link to="/login">
             <div className="box-icon__contents">
-              <Link to="/login">
-              <AiOutlineKey />
-              <span>로그인</span>
+              <div><AiOutlineKey /></div>
+              <span className="box-icon__contents--text">로그인</span>
+              </div>
             </Link>
-            </div>
           ) : (
+              <Link to="/profile">
             <div className="box-icon__contents">
-              <BsFillPersonFill />
-              <span>내 정보</span>
-            </div>
+              <div className="box-icon__contents--icon"><BsFillPersonFill /></div>
+              <span className="box-icon__contents--text">내 정보</span>
+              </div>
+              </Link>
           )}
-        </div>
       </div>
     </div>
   );

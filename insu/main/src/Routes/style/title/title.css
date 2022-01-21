@@ -43,12 +43,24 @@
 .box-icon__contents {
   font-size: 40px;
   margin-left: 30px;
+  font-family: Jua;
   display: flex;
   cursor: pointer;
 }
-.box-icon__contents > span {
+
+.box-icon__contents:hover {
+  color: rgb(131, 74, 0);
+}
+
+.box-icon__contents--icon {
+  width: 40px;
+  height: 40px;
+  margin-right: 20px;
+}
+
+
+.box-icon__contents--text {
   font-size: 40px;
-  margin-left: 20px;
   font-family: Jua;
-  color: rgba(73, 62, 0, 0.911);
+  color: rgb(131, 74, 0);
 }

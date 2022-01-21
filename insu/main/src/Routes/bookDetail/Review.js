@@ -11,7 +11,7 @@ const Review = () => {
     const [text,setText] = useState("");
     const [toggle, setToggle] = useState(true);
     // 수정 버튼 활성화/비 활성화
-    const onRewrite = () => {
+    const onWrite = () => {
         setToggle((toggle)=>!toggle);
     }
 
@@ -110,7 +110,7 @@ const Review = () => {
               <span>{text}</span>
             </div>
             }
-            <div onClick = {onRewrite} className='BookDetail__Reivew__contents--renew'>
+            <div onClick = {onWrite} className='BookDetail__Reivew__contents--renew'>
                 {toggle?
                 <AiOutlineCheckCircle/>
                 :
