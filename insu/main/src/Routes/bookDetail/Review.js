@@ -83,7 +83,16 @@ const Review = () => {
             </div>
             :
             <div className="BookDetail__Reivew__contents__box--star">
-                <BsFillStarFill/>
+                 <label htmlFor="1"><BsFillStarFill/></label>
+                <input type="radio" name="pos" id="1" value="1" />
+                <label htmlFor="2"><BsFillStarFill/></label>
+                <input type="radio" name="pos" id="2" value="2"/>
+                <label htmlFor="3"><BsFillStarFill/></label>
+                <input type="radio" name="pos" id="3" value="3" />
+                <label htmlFor="4"><BsFillStarFill/></label>
+                <input type="radio" name="pos" id="4" value="4" />
+                <label htmlFor="5"><BsFillStarFill/></label>
+                <input type="radio" name="pos" id="pos5" value="5" />
             </div>}
 
             {/* 닉네임 표시 부분 */}
@@ -98,7 +107,7 @@ const Review = () => {
             </div>
             :
             <div className="BookDetail__Reivew__contents__box--text">
-              <span>너무 잘 읽었습니다. 추천합니다.</span>
+              <span>{text}</span>
             </div>
             }
             <div onClick = {onRewrite} className='BookDetail__Reivew__contents--renew'>

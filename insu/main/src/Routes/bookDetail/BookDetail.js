@@ -4,6 +4,7 @@ import React, { useEffect } from 'react';
 import {useState} from "react";
 import { useLocation, Link } from 'react-router-dom';
 import {BsFillStarFill} from "react-icons/bs";
+import {FaHeart} from "react-icons/fa";
 
 
 // 쿼리 뽑는 함수
@@ -75,10 +76,10 @@ useEffect(() => {
         </div>
         <div className="BookDetail__Container__subTitle">
           <div className = "BookDetail__Container__subTitle--title">Book Description</div>
-          <div className='BookDetail__Container__subTitle--star'>
-            <BsFillStarFill/>
-            </div>
-            <div className='BookDetail__Container__subTitle--number'>3</div>
+          <div className = "BookDetail__Container__subTitle--heart"><FaHeart/></div>
+          <div className='BookDetail__Container__subTitle--number'>3</div>
+          <div className='BookDetail__Container__subTitle--star'><BsFillStarFill/></div>
+          <div className='BookDetail__Container__subTitle--number'>3</div>
         </div>
         <div className="BookDetail__Container__subContents">
           <p>

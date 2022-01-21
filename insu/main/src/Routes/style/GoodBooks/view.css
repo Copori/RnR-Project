@@ -1,7 +1,12 @@
+.GoodBooks__Slide {
+  margin-top: 290px;
+}
+
 .GoodBooks__View {
   width: 1040px;
   height: 320px;
   margin-top: 10px;
+  
   display: flex;
   justify-content: space-around;
 }

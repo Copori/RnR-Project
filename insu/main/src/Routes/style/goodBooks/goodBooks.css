@@ -6,9 +6,14 @@
   align-items: center;
 }
 .GoodBooks__title {
-  width: 1020px;
+  width: 1060px;
   height: 50px;
+  position: fixed;
   display: flex;
+  z-index: 10;
+  margin-top: 220px;
+  background-color: rgb(252, 206, 116);
+  border-bottom: 3px solid rgb(70, 39, 0);
 }
 
 .GoodBooks__title--left {
