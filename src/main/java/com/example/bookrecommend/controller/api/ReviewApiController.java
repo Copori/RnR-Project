@@ -28,7 +28,7 @@ public class ReviewApiController {
 
         String username = auth.getName();
 
-        reviewService.saveReview(username,request);
+        reviewService.saveReview(username, request);
 
         return new ResponseDto(HttpStatus.OK.value());
     }

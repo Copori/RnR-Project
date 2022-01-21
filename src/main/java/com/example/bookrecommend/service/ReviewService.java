@@ -42,7 +42,7 @@ public class ReviewService {
         // dto로
         List<ReviewDto> reviewDtos = reviews.stream()
                 .map(r -> ReviewDto.builder()
-                        .reviewId(r.getId())
+                        .bookId(r.getBookId())
                         .reviewScore(r.getReviewScore())
                         .reviewContent(r.getReviewContent())
                         .build())
@@ -87,21 +87,18 @@ public class ReviewService {
         Long userId = user.getId();
 
         // bookId추출
-        long bookId = reviewDto.getReviewId();
+        long bookId = reviewDto.getBookId();
 
         // 현재 user가 해당 bookId에 대해 첫 댓글인지
         int reviewSaveCnt = reviewRepository.countWithReviewByUserIdAndBookId(userId, bookId);// null or 1
 
         if( reviewSaveCnt > 0 ) {
-            throw new IllegalStateException("이미 댓글을 작성한 회원입니다.");
-            // 댓글 달았던 이력이 없을 경우
-
-
-            // 유저정보 + 권한정보를 저장
-        }else {
             // 댓글 달았던 이력이 있는 경우
+            throw new IllegalStateException("이미 댓글을 작성한 회원입니다.");
+        }else {
+            // 댓글 달았던 이력이 없을 경우
             Review review = Review.builder()
-                    .bookId(reviewDto.getReviewId())
+                    .bookId(reviewDto.getBookId())
                     .user(user)
                     .reviewScore(reviewDto.getReviewScore())
                     .reviewContent(reviewDto.getReviewContent())
@@ -133,7 +130,6 @@ public class ReviewService {
 
         // 요청 객체 추출
         Optional<Review> findReview = reviewRepository.findById(id);
-
 
         // 추출한 객체에 수정 요청으로 들어온 값 세팅
         if (findReview.isPresent()) {

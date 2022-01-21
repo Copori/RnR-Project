@@ -41,7 +41,6 @@ public class ReviewRepository2 {
 
         // PageImple 리턴
         return new PageImpl<>(reviews, pageable, total);
-
     }
 
 }

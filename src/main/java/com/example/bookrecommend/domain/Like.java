@@ -15,7 +15,7 @@ import java.sql.Timestamp;
 @Getter @Setter
 @Builder
 @Table(name = "likes")
-@DynamicInsert // activated컬럼이 default 'N'으로 유지되도록
+@DynamicInsert
 public class Like {
 
     @JsonIgnore
