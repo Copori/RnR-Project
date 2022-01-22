@@ -33,6 +33,10 @@ public class JwtFilter extends GenericFilterBean {
         String jwt = resolveToken(httpServletRequest);
         String requestURI = httpServletRequest.getRequestURI();
 
+
+
+
+
         if (StringUtils.hasText(jwt) && tokenProvider.validateToken(jwt)) {
             Authentication authentication = tokenProvider.getAuthentication(jwt);
             SecurityContextHolder.getContext().setAuthentication(authentication);
@@ -43,6 +47,7 @@ public class JwtFilter extends GenericFilterBean {
 
         filterChain.doFilter(servletRequest, servletResponse);
     }
+
     
     // Request Header에서 토큰 정보를 꺼내오기 위한 메서드
     private String resolveToken(HttpServletRequest request) {
@@ -50,6 +55,8 @@ public class JwtFilter extends GenericFilterBean {
         if (StringUtils.hasText(bearerToken) && bearerToken.startsWith("Bearer ")) {
             return bearerToken.substring(7);
         }
+
+
         return null;
     }
 }

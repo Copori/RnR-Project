@@ -17,7 +17,7 @@ import javax.validation.Valid;
 @RequestMapping("/api")
 @RequiredArgsConstructor
 @Slf4j
-//@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:3000")
 public class UserApiController {
     private final UserService userService;
 
@@ -29,7 +29,6 @@ public class UserApiController {
             //로직 중단
             return new ResponseDto(HttpStatus.INTERNAL_SERVER_ERROR.value(), result.getFieldErrors());
         }
-
         //오류가 없다면 다음 로직들을 수행한다
         User signupUser = userService.signup(request);
 
