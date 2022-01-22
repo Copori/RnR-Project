@@ -2,8 +2,10 @@ package com.example.bookrecommend.controller.api;
 
 import com.example.bookrecommend.controller.dto.LoginDto;
 import com.example.bookrecommend.controller.dto.TokenDto;
+import com.example.bookrecommend.domain.User;
 import com.example.bookrecommend.jwt.JwtFilter;
 import com.example.bookrecommend.jwt.TokenProvider;
+import com.example.bookrecommend.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -15,14 +17,16 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
 @RequiredArgsConstructor
-//@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:3000")
 public class AuthApiController {
     private final TokenProvider tokenProvider;
     private final AuthenticationManagerBuilder authenticationManagerBuilder;
+    private final UserRepository userRepository;
 
     // 로그인
     @PostMapping("/login")
@@ -45,7 +49,10 @@ public class AuthApiController {
         // Header에 추가
         httpHeaders.add(JwtFilter.AUTHORIZATION_HEADER, "Bearer " + jwt);
 
+        /** userID를 찾아와야됨 */
+        Long findUserId = userRepository.findByUsername(loginDto.getUsername()).get().getId();
+
         // jwt토큰을 body에도 추가         body            header          status
-        return new ResponseEntity<>(new TokenDto(jwt), httpHeaders, HttpStatus.OK);
+        return new ResponseEntity<>(new TokenDto(jwt, findUserId), httpHeaders, HttpStatus.OK);
     }
 }
